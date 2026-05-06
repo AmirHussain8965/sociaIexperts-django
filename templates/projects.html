@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Projects - SOCIAL EXPERTS{% endblock %}
+{% block meta_description %}Explore our latest projects and case studies showcasing our expertise and successful client work.{% endblock %}
+
+{% block content %}
+
+<!-- Breadcrumb Section Start =============================== -->
+<section class="breadcrumb_section">
+    <div class="breadcrumb_blob breadcrumb_blob_one"></div>
+    <div class="breadcrumb_blob breadcrumb_blob_two"></div>
+
+    <div class="container">
+        <div class="breadcrumb_content" data-aos="fade-up">
+            <h1 class="breadcrumb_title">Our Projects</h1>
+            <div class="breadcrumb_nav">
+                <a href="{% url 'core:home' %}">Home</a>
+                <i class="bi bi-chevron-right"></i>
+                <span>Projects</span>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End =============================== -->
+
+
+<!-- Projects Grid Start =============================== -->
+<section class="projects_grid_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="case_item">
+                    <img src="{% static 'images/pj1.jpeg' %}" alt="Project 1">
+                    <a href="#" class="case_overlay" aria-label="View project">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                    <div class="project_info">
+                        <h3>E-Commerce Platform</h3>
+                        <p class="project_category">Digital Marketing</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="case_item">
+                    <img src="{% static 'images/pj2.jpeg' %}" alt="Project 2">
+                    <a href="#" class="case_overlay" aria-label="View project">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                    <div class="project_info">
+                        <h3>Brand Development</h3>
+                        <p class="project_category">Branding</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="case_item">
+                    <img src="{% static 'images/pj3.jpeg' %}" alt="Project 3">
+                    <a href="#" class="case_overlay" aria-label="View project">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                    <div class="project_info">
+                        <h3>Web Development</h3>
+                        <p class="project_category">IT Services</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="case_item">
+                    <img src="{% static 'images/pj4.jpeg' %}" alt="Project 4">
+                    <a href="#" class="case_overlay" aria-label="View project">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                    <div class="project_info">
+                        <h3>Social Media Campaign</h3>
+                        <p class="project_category">Social Media</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Projects Grid End =============================== -->
+
+{% endblock %}

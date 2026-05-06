@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - SOCIAL EXPERTS{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+{% block footer %}{% endblock footer %}
+
+{% block content %}
+<div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>SOCIAL EXPERTS</h3>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="{% url 'profiles:dashboard' %}" class="active"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
+            <a href="{% url 'profiles:profile' %}"><i class="bi bi-person-fill"></i> Profile</a>
+            <a href="{% url 'accounts:logout' %}"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="dashboard-topbar">
+            <button class="sidebar-toggler" id="sidebarToggler"><i class="bi bi-list"></i></button>
+            <div class="user-greeting">
+                <span class="fw-bold">Hello, {{ user.username }}!</span>
+            </div>
+        </div>
+
+        <div class="container-fluid px-0">
+            <h2 class="mb-4 text-primary">Dashboard Overview</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card card-dashboard h-100 p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-size: 1.5rem;">
+                                <i class="bi bi-activity"></i>
+                            </div>
+                            <h5 class="mb-0">Recent Activity</h5>
+                        </div>
+                        <p class="text-muted">You have no new recent activities.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card card-dashboard h-100 p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-size: 1.5rem;">
+                                <i class="bi bi-bag-check"></i>
+                            </div>
+                            <h5 class="mb-0">Services</h5>
+                        </div>
+                        <p class="text-muted">Explore our premium services.</p>
+                        <a href="{% url 'core:services' %}" class="btn btn-sm btn-outline-success mt-auto align-self-start">Explore</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card card-dashboard h-100 p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-size: 1.5rem;">
+                                <i class="bi bi-person-badge"></i>
+                            </div>
+                            <h5 class="mb-0">My Profile</h5>
+                        </div>
+                        <p class="text-muted">Manage your personal information.</p>
+                        <a href="{% url 'profiles:profile' %}" class="btn btn-sm btn-outline-warning mt-auto align-self-start">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}

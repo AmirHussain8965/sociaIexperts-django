@@ -976,9 +976,8 @@ input, textarea {
     border-radius: 20px;
     margin-bottom: 20px;
     display: flex;
-    flex-direction: column-reverse;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
     gap: 20px;
     transition: 0.3s ease;
 }
@@ -4060,6 +4059,8 @@ input, textarea {
 .auth_form_link a:hover {
     color: var(--color_green);
 }
+
+
 /* Additional Pages Responsive ===================== */
 @media (max-width: 1366px) {
     .hero_section{

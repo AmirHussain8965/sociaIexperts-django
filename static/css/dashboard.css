@@ -1,0 +1,119 @@
+/* Dashboard layout */
+html, body {
+    height: 100%;
+}
+
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: #1a1a2e; /* Dark professional theme */
+    color: #fff;
+    min-height: 100vh;
+    transition: all 0.3s;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .sidebar-header {
+    padding: 20px;
+    background-color: #16213e;
+    text-align: center;
+    border-bottom: 1px solid #0f3460;
+}
+
+.sidebar .sidebar-header h3 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.sidebar-nav {
+    padding: 20px 0;
+    flex-grow: 1;
+}
+
+.sidebar-nav a {
+    padding: 15px 25px;
+    font-size: 1.1em;
+    display: block;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.sidebar-nav a:hover, .sidebar-nav a.active {
+    background-color: #33cc79;
+    color: #fff;
+    border-left: 4px solid #fff;
+}
+
+.sidebar-nav a i {
+    margin-right: 10px;
+}
+
+/* Main Content Styling */
+.main-content {
+    flex-grow: 1;
+    background-color: #f8f9fa;
+    padding: 30px;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.dashboard-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    background: #fff;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+.sidebar-toggler {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.card-dashboard {
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+.card-dashboard:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive Sidebar Offcanvas */
+@media (max-width: 768px) {
+    .sidebar {
+        margin-left: -250px;
+        position: fixed;
+        z-index: 9999;
+    }
+    
+    .sidebar.active {
+        margin-left: 0;
+    }
+    
+    .sidebar-toggler {
+        display: block;
+    }
+    
+    .dashboard-wrapper.active .sidebar {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,241 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}SOCIAL EXPERTS{% endblock %}">
+    <title>{% block title %}SOCIAL EXPERTS{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body{% if request.resolver_match.url_name in 'login,register' %} class="auth_body"{% endif %}>
+
+    {% block navbar %}
+    <!-- Header Start =============================== -->
+    <header class="header_section">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="{% url 'core:home' %}">
+                    <p class="logo_text">Social <span>Expert</span></p>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav_item"><a class="nav_link{% if request.resolver_match.url_name == 'home' %} active{% endif %}" href="{% url 'core:home' %}">Home</a></li>
+                        <li class="nav_item"><a class="nav_link{% if request.resolver_match.url_name == 'about' %} active{% endif %}" href="{% url 'core:about' %}">About</a></li>
+                        <li class="nav_item"><a class="nav_link{% if request.resolver_match.url_name == 'projects' %} active{% endif %}" href="{% url 'core:projects' %}">Our Project</a></li>
+                        <li class="nav_item"><a class="nav_link{% if request.resolver_match.url_name == 'services' %} active{% endif %}" href="{% url 'core:services' %}">Services</a></li>
+                        <li class="nav_item"><a class="nav_link{% if request.resolver_match.url_name == 'blog' %} active{% endif %}" href="{% url 'core:blog' %}">Blog</a></li>
+                        <li class="nav_item dropdown">
+                            <a class="nav_link dropdown_toggle" href="#" id="userDropdown">
+                                {% if user.is_authenticated %}
+                                    {{ user.username }} <i class="bi bi-chevron-down"></i>
+                                {% else %}
+                                    User <i class="bi bi-chevron-down"></i>
+                                {% endif %}
+                            </a>
+                            <ul class="dropdown_menu" id="userMenu">
+                                {% if user.is_authenticated %}
+                                    <li><a href="{% url 'profiles:dashboard' %}">Dashboard</a></li>
+                                    <li><a href="{% url 'profiles:profile' %}">Profile</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                                {% else %}
+                                    <li><a href="{% url 'accounts:register' %}">Sign Up</a></li>
+                                    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="nav_btns">
+                        <button class="search_btn" id="searchToggle" aria-label="Open search"><i class="bi bi-search"></i></button>
+                        <button class="sidebar_btn" id="sidebarToggle" aria-label="Open menu"><i class="bi bi-list"></i></button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="search_popup" id="searchPopup">
+            <div class="search_popup_inner">
+                <button class="search_close" id="searchClose" aria-label="Close search"><i class="bi bi-x-lg"></i></button>
+                <form class="search_form" onsubmit="return false;">
+                    <input type="text" placeholder="Search here..." aria-label="Search">
+                    <button type="submit" aria-label="Submit search"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </header>
+    <!-- Header End =============================== -->
+    {% endblock navbar %}
+
+
+    <!-- Sidebar Offcanvas Start =============================== -->
+    <aside class="offcanvas_sidebar" id="offcanvasSidebar">
+        <button class="offcanvas_close" id="offcanvasClose" aria-label="Close sidebar"><i class="bi bi-x-lg"></i></button>
+        <div class="offcanvas_logo">
+            <p class="logo_text">Social <span>Expert</span></p>
+        </div>
+        <div class="offcanvas_info">
+            <h3 class="offcanvas_title">Get In Touch</h3>
+            <div class="offcanvas_info_item">
+                <div class="offcanvas_info_icon"><i class="bi bi-envelope"></i></div>
+                <div class="offcanvas_info_text">
+                    <span>Email</span>
+                    <a href="mailto:info@socialexperts.io">info@socialexperts.io</a>
+                </div>
+            </div>
+            <div class="offcanvas_info_item">
+                <div class="offcanvas_info_icon"><i class="bi bi-telephone"></i></div>
+                <div class="offcanvas_info_text">
+                    <span>Phone</span>
+                    <a href="tel:123456789">123456789</a>
+                </div>
+            </div>
+            <div class="offcanvas_info_item">
+                <div class="offcanvas_info_icon"><i class="bi bi-geo-alt"></i></div>
+                <div class="offcanvas_info_text">
+                    <span>Location</span>
+                    <a href="#">Lahore, Islamabad, Karachi</a>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas_social">
+            <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+    </aside>
+    <div class="body_overlay" id="bodyOverlay"></div>
+    <!-- Sidebar Offcanvas End =============================== -->
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Main Content Block -->
+    {% block content %}{% endblock %}
+
+    {% block footer %}
+    <!-- Footer Section Start =============================== -->
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row footer_top">
+                <div class="col-xl-3 col-lg-3 col-md-6" data-aos="fade-up">
+                    <div class="footer_widget">
+                        <h4 class="footer_widget_title">Important Links</h4>
+                        <ul class="footer_links">
+                            <li><a href="{% url 'core:home' %}">Home</a></li>
+                            <li><a href="{% url 'core:about' %}">About Us</a></li>
+                            <li><a href="{% url 'core:services' %}">Service</a></li>
+                            <li><a href="{% url 'core:blog' %}">Blog</a></li>
+                            <li><a href="{% url 'core:projects' %}">Projects</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xl-5 col-lg-5 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="footer_widget">
+                        <h4 class="footer_widget_title">Contact Us</h4>
+                        <ul class="footer_contact">
+                            <li>
+                                <i class="bi bi-geo-alt"></i>
+                                <a href="#">Lahore, Karachi, Islamabad</a>
+                            </li>
+                            <li>
+                                <i class="bi bi-envelope"></i>
+                                <div>
+                                    <a href="mailto:info@socialexperts.io">info@socialexperts.io</a>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="bi bi-telephone"></i>
+                                <a href="tel:123456789">123456789</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="footer_widget">
+                        <h4 class="footer_widget_title">Follow Us</h4>
+                        <div class="footer_social">
+                            <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="newsletter_box" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h4 class="newsletter_title">Get latest updates</h4>
+                    </div>
+                    <div class="col-lg-6">
+                        <form class="newsletter_form" method="post" action="{% url 'core:newsletter_subscribe' %}">
+                            {% csrf_token %}
+                            {{ newsletter_form.email }}
+                            <button type="submit">
+                                Subscribe <i class="bi bi-arrow-right"></i>
+                            </button>
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer_bottom">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <p class="copyright_text">Copyright @2024 All Rights Reserved SOCIAL EXPERTS</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="footer_bottom_links">
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Use</a></li>
+                            <li><a href="#">Sales and Refunds</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End =============================== -->
+    {% endblock footer %}
+
+
+    <!-- Back To Top Button -->
+    <button id="backToTop" aria-label="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

@@ -1,3 +1,0 @@
-
-    .service_card_title br{display: none;}
-

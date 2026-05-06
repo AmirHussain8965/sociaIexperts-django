@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block navbar %}{% endblock %}
+
+{% block title %}Verify OTP - SOCIAL EXPERTS{% endblock %}
+
+{% block content %}
+<section class="auth_section">
+    <div class="auth_container">
+
+        <!-- Left Visual Panel -->
+        <div class="auth_visual" data-aos="fade-right" data-aos-duration="800">
+            <div class="auth_visual_blob auth_visual_blob_one"></div>
+            <div class="auth_visual_blob auth_visual_blob_two"></div>
+            <div class="auth_visual_blob auth_visual_blob_three"></div>
+
+            <div class="auth_visual_content">
+                <h2 class="auth_visual_title">Verification</h2>
+                <p class="auth_visual_text">
+                    We take security seriously. Please enter the one-time password we sent to your email.
+                </p>
+
+                <ul class="auth_visual_features">
+                    <li><i class="bi bi-check-circle-fill"></i> Secure 6-Digit OTP</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Valid for 10 minutes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Form Panel -->
+        <div class="auth_form_panel" data-aos="fade-left" data-aos-duration="800">
+            <a href="{% url 'accounts:forgot_password' %}" class="auth_back_link">
+                <i class="bi bi-arrow-left"></i> Change Email
+            </a>
+
+            <div class="auth_form_inner">
+                <div class="auth_form_head">
+                    <h1 class="auth_form_title">Verify OTP</h1>
+                    <p class="auth_form_subtitle">We've sent a 6-digit code to your email.</p>
+                </div>
+
+                <form class="auth_form" method="post">
+                    {% csrf_token %}
+                    
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <div class="auth_field">
+                        <label for="otp_code">6-Digit OTP</label>
+                        <div class="auth_input_wrap">
+                            <i class="bi bi-shield-lock"></i>
+                            <input type="text" name="otp_code" id="otp_code" class="form-control" placeholder="123456" maxlength="6" pattern="\d{6}" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="auth_submit">
+                        Verify <i class="bi bi-check2-circle"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

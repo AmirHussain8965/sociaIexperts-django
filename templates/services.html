@@ -1,0 +1,413 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Services - SOCIAL EXPERTS{% endblock %}
+{% block meta_description %}Explore our professional services including digital marketing, IT services, and custom
+solutions.{% endblock %}
+
+{% block content %}
+
+<!-- Breadcrumb Section Start =============================== -->
+<section class="breadcrumb_section">
+    <div class="breadcrumb_blob breadcrumb_blob_one"></div>
+    <div class="breadcrumb_blob breadcrumb_blob_two"></div>
+
+    <div class="container">
+        <div class="breadcrumb_content" data-aos="fade-up">
+            <h1 class="breadcrumb_title">Our Services</h1>
+            <div class="breadcrumb_nav">
+                <a href="{% url 'core:home' %}">Home</a>
+                <i class="bi bi-chevron-right"></i>
+                <span>Services</span>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End =============================== -->
+
+
+<!-- Service Section Start =============================== -->
+<section class="service_section_detail py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="service_card card_yellow">
+                    <div class="service_card_content">
+                        <h4 class="service_card_title">Digital <br>Marketing</h4>
+                        <p>We provide comprehensive digital marketing solutions to boost your online presence and reach
+                            your target audience effectively.</p>
+                        <a href="#" class="service_card_link">
+                            <span class="link_arrow"><i class="bi bi-arrow-right"></i></span>
+                            Read More
+                        </a>
+                    </div>
+                    <div class="service_card_icon">
+                        <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service_card card_green">
+                    <div class="service_card_content">
+                        <h4 class="service_card_title">IT <br>Services</h4>
+                        <p>Our IT services ensure your infrastructure runs smoothly with 24/7 support and expert
+                            technical assistance.</p>
+                        <a href="#" class="service_card_link">
+                            <span class="link_arrow"><i class="bi bi-arrow-right"></i></span>
+                            Read More
+                        </a>
+                    </div>
+                    <div class="service_card_icon">
+                        <i class="bi bi-laptop"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="service_card card_blue">
+                    <div class="service_card_content">
+                        <h4 class="service_card_title">Custom <br>Solutions</h4>
+                        <p>We develop tailored custom solutions designed to meet your unique business requirements and
+                            challenges.</p>
+                        <a href="#" class="service_card_link">
+                            <span class="link_arrow"><i class="bi bi-arrow-right"></i></span>
+                            Read More
+                        </a>
+                    </div>
+                    <div class="service_card_icon">
+                        <i class="bi bi-gear-wide-connected"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="service_card card_yellow">
+                    <div class="service_card_content">
+                        <h4 class="service_card_title">Social Media <br>Management</h4>
+                        <p>Manage and grow your social media presence with our expert team handling content and
+                            engagement.</p>
+                        <a href="#" class="service_card_link">
+                            <span class="link_arrow"><i class="bi bi-arrow-right"></i></span>
+                            Read More
+                        </a>
+                    </div>
+                    <div class="service_card_icon">
+                        <i class="bi bi-share"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service_card card_green">
+                    <div class="service_card_content">
+                        <h4 class="service_card_title">SEO <br>Optimization</h4>
+                        <p>Improve your search engine rankings and organic traffic with our proven SEO strategies and
+                            techniques.</p>
+                        <a href="#" class="service_card_link">
+                            <span class="link_arrow"><i class="bi bi-arrow-right"></i></span>
+                            Read More
+                        </a>
+                    </div>
+                    <div class="service_card_icon">
+                        <i class="bi bi-search"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="service_card card_blue">
+                    <div class="service_card_content">
+                        <h4 class="service_card_title">Branding <br>Strategy</h4>
+                        <p>Create a powerful brand identity that resonates with your audience and sets you apart from
+                            competitors.</p>
+                        <a href="#" class="service_card_link">
+                            <span class="link_arrow"><i class="bi bi-arrow-right"></i></span>
+                            Read More
+                        </a>
+                    </div>
+                    <div class="service_card_icon">
+                        <i class="bi bi-palette"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Service Section End =============================== -->
+
+<!-- About Section Start =============================== -->
+<section class="about_team_section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-5 col-lg-5" data-aos="fade-right">
+                <div class="about_team_visual">
+                    <div class="team_star_shape">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 0L23 16L40 20L23 24L20 40L17 24L0 20L17 16L20 0Z" fill="#33CC79" />
+                        </svg>
+                    </div>
+                    <div class="about_team_image">
+                        <img src="{% static 'images/team1.jpg' %}" alt="About SOCIAL EXPERTS">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-7 col-lg-7" data-aos="fade-left">
+                <div class="about_team_content">
+                    <span class="section_subtitle subtitle_green">Who we are?</span>
+                    <h2 class="section_title">We are dynamic team of creative design and development</h2>
+                    <p class="about_team_text">
+                        We have almost 12+ years of experience for helping consulting services and business
+                        solutions and best protect.
+                    </p>
+                    <a class='btn_primary' href='/about'>About our Agency</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Section End =============================== -->
+
+
+<!-- Pricing Section Start =============================== -->
+<section class="pricing_section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8" data-aos="fade-up">
+                <div class="section_head text-center">
+                    <span class="section_subtitle">Pricing Plans</span>
+                    <h2 class="section_title">Choose your perfect plan</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing_row" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-0 justify-content-center">
+                <div class="col-xl-4 col-lg-5 col-md-6">
+                    <div class="pricing_left">
+                        <div class="pricing_brand">
+                            <div class="pricing_brand_icon">
+                                <span></span>
+                            </div>
+                            <h5 class="pricing_brand_name">Starter</h5>
+                        </div>
+                        <p class="pricing_desc">Deposit Amount</p>
+                        <div class="pricing_price">
+                            <b>45$</b><span>/ 20 Days</span>
+                        </div>
+                        <a class="btn_pricing" href="#">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5 col-md-6">
+                    <div class="pricing_right">
+                        <h4 class="pricing_inc_title">What's included</h4>
+                        <ul class="pricing_features">
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> 1 Way Of Earning</li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> 6 Video Access</li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> 1st Level Benefit 15%</li>
+                            <li class="disabled"><i class="bi bi-x-circle-fill"></i> Weekly Reports</li>
+                            <li class="disabled"><i class="bi bi-x-circle-fill"></i> 24/7 Support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing_row" data-aos="fade-up" data-aos-delay="200">
+            <div class="row g-0 justify-content-center">
+                <div class="col-xl-4 col-lg-5 col-md-6">
+                    <div class="pricing_left">
+                        <div class="pricing_brand">
+                            <div class="pricing_brand_icon">
+                                <span></span>
+                            </div>
+                            <h5 class="pricing_brand_name">Student Plan</h5>
+                        </div>
+                        <p class="pricing_desc">Show social proof notifications to increase leads and sales.</p>
+                        <div class="pricing_price">
+                            <b>65$</b><span>/ 48 Days</span>
+                        </div>
+                        <a class="btn_pricing" href="#">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5 col-md-6">
+                    <div class="pricing_right">
+                        <h4 class="pricing_inc_title">What's included</h4>
+                        <ul class="pricing_features">
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> 3 Ways Of Earning</li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> 12 Video Access</li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> 1st Level Benefit 15%</li>
+                            <li class="disabled"><i class="bi bi-x-circle-fill"></i> Weekly Reports</li>
+                            <li class="disabled"><i class="bi bi-x-circle-fill"></i> 24/7 Support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing_row" data-aos="fade-up" data-aos-delay="300">
+            <div class="row g-0 justify-content-center">
+                <div class="col-xl-4 col-lg-5 col-md-6">
+                    <div class="pricing_left popular">
+                        <span class="pricing_badge">Most Popular</span>
+                        <div class="pricing_brand">
+                            <div class="pricing_brand_icon">
+                                <span></span>
+                            </div>
+                            <h5 class="pricing_brand_name">Premium Plan</h5>
+                        </div>
+                        <p class="pricing_desc">Show social proof notifications to increase leads and sales.</p>
+                        <div class="pricing_price">
+                            <b>85$</b><span>/ 180 Days</span>
+                        </div>
+                        <a class="btn_pricing" href="#">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5 col-md-6">
+                    <div class="pricing_right">
+                        <h4 class="pricing_inc_title">What's included</h4>
+                        <ul class="pricing_features">
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> 7 Ways Of Earning</li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> 12 Video Access</li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> 1st Level Benefit 15%</li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> 2nd Level Benefit 5%</li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> Weekly Reports</li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> 24/7 Support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Pricing Section End =============================== -->
+
+
+<!-- FAQ Section Start =============================== -->
+<section class="faq_section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8" data-aos="fade-up">
+                <div class="section_head text-center">
+                    <span class="section_subtitle subtitle_green">FAQ</span>
+                    <h2 class="section_title">Frequently Asked Questions</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-xl-10" data-aos="fade-up" data-aos-delay="100">
+                <div class="accordion faq_accordion" id="faqAccordion">
+
+                    <div class="accordion-item faq_item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                Can I cancel my package after upgrade?
+                            </button>
+                        </h3>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">No.</div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq_item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                How do I get my cash slip?
+                            </button>
+                        </h3>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                For cash slip, you will contact our official number then get the slip from our
+                                Accounts department and withdraw your money from any account like JazzCash,
+                                EasyPaisa, Bank etc.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq_item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                Which payment methods do you accept?
+                            </button>
+                        </h3>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Cash, Local Banks, International Banks and via Electronic Money (JazzCash,
+                                EasyPaisa, etc.)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq_item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                                Are there any discounts for people in need?
+                            </button>
+                        </h3>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                As for your discount request, I am sorry to say that we do not offer a discount. We
+                                believe that our services offer more value of your money and it will be unfair to
+                                other customers if we make an exception. Let me know if I can send you all the
+                                information about our training.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq_item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                                How can I manage my Account?
+                            </button>
+                        </h3>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                First of all you need to sign up your account then login to your account using the
+                                id and password sent to your given email. After signing up you need to upgrade your
+                                package and enjoy your bonuses.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq_item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                                Do you offer a free trial edit?
+                            </button>
+                        </h3>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Free trials are not really meant to be free. So, we will not give any type of free
+                                trial.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq_item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq7" aria-expanded="false" aria-controls="faq7">
+                                Is my credit card information secure?
+                            </button>
+                        </h3>
+                        <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">Yes.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- FAQ Section End =============================== -->
+
+{% endblock %}

@@ -1,0 +1,428 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - SOCIAL EXPERTS{% endblock %}
+{% block meta_description %}Learn about SOCIAL EXPERTS - A digital company with 10+ years of experience in digital marketing and services.{% endblock %}
+
+{% block content %}
+
+<!-- Breadcrumb Section Start =============================== -->
+<section class="breadcrumb_section">
+    <div class="breadcrumb_blob breadcrumb_blob_one"></div>
+    <div class="breadcrumb_blob breadcrumb_blob_two"></div>
+
+    <div class="container">
+        <div class="breadcrumb_content" data-aos="fade-up">
+            <h1 class="breadcrumb_title">About Us</h1>
+            <div class="breadcrumb_nav">
+                <a href="{% url 'core:home' %}">Home</a>
+                <i class="bi bi-chevron-right"></i>
+                <span>About Us</span>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End =============================== -->
+
+
+<!-- Who Are We Section Start =============================== -->
+<section class="whoweare_section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-5 col-lg-6" data-aos="fade-right">
+                <div class="whoweare_content">
+                    <h2 class="whoweare_title">Who Are We?</h2>
+                    <p class="whoweare_text">
+                        We are a digital and branding company that believes in the power of creative strategy and
+                        along with great design.
+                    </p>
+                    <ul class="whoweare_list">
+                        <li><i class="bi bi-check2"></i> 24/7 Backup</li>
+                        <li><i class="bi bi-check2"></i> 6 Total Projects</li>
+                        <li><i class="bi bi-check2"></i> 99% Customer Satisfaction</li>
+                        <li><i class="bi bi-check2"></i> 95% Response Rate</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-xl-7 col-lg-6" data-aos="fade-left">
+                <div class="whoweare_gallery">
+                    <div class="row gx-3">
+                        <div class="col-7">
+                            <div class="gallery_item gallery_item_tall">
+                                <img src="{% static 'images/ab-inner-1.webp' %}" alt="About Image 1">
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="gallery_item gallery_item_short">
+                                <img src="{% static 'images/ab-inner-2.webp' %}" alt="About Image 2">
+                            </div>
+                            <div class="gallery_item gallery_item_short">
+                                <img src="{% static 'images/ab-inner-3.webp' %}" alt="About Image 3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Who Are We Section End =============================== -->
+
+
+<!-- Counter Section Start =============================== -->
+<section class="counter_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="counter_item">
+                    <h3 class="counter_number"><span class="counter_value" data-target="150000">0</span>+</h3>
+                    <h4 class="counter_label">Total Users</h4>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="counter_item">
+                    <h3 class="counter_number"><span class="counter_value" data-target="24">0</span>+</h3>
+                    <h4 class="counter_label">Years of operation</h4>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="counter_item">
+                    <h3 class="counter_number"><span class="counter_value" data-target="84">0</span>+</h3>
+                    <h4 class="counter_label">Our Experts</h4>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="counter_item">
+                    <h3 class="counter_number"><span class="counter_value" data-target="100">0</span>+</h3>
+                    <h4 class="counter_label">Daily Withdrawals</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Counter Section End =============================== -->
+
+
+<!-- Service Section Start =============================== -->
+<section class="service_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-5" data-aos="fade-right">
+                <div class="service_intro">
+                    <span class="section_subtitle subtitle_yellow">What we can do for you?</span>
+                    <h2 class="section_title">Service we can help you with</h2>
+                    <div class="service_intro_bottom">
+                        <h4 class="service_bottom_title">We will ensure you always get the best Digital Service</h4>
+                        <a class="btn_primary" href="{% url 'core:services' %}">See all Services</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-7 col-lg-7">
+                <div class="service_cards">
+                    <div class="service_card card_yellow" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service_card_content">
+                            <h4 class="service_card_title">Digital <br>Marketing</h4>
+                            <a href="#" class="service_card_link">
+                                <span class="link_arrow"><i class="bi bi-arrow-right"></i></span>
+                                Read More
+                            </a>
+                        </div>
+                        <div class="service_card_icon">
+                            <i class="bi bi-bar-chart-line"></i>
+                        </div>
+                    </div>
+
+                    <div class="service_card card_green" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service_card_content">
+                            <h4 class="service_card_title">IT <br>Services</h4>
+                            <a href="#" class="service_card_link">
+                                <span class="link_arrow"><i class="bi bi-arrow-right"></i></span>
+                                Read More
+                            </a>
+                        </div>
+                        <div class="service_card_icon">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                    </div>
+
+                    <div class="service_card card_blue" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service_card_content">
+                            <h4 class="service_card_title">Any kind Custom <br>Solution</h4>
+                            <a href="#" class="service_card_link">
+                                <span class="link_arrow"><i class="bi bi-arrow-right"></i></span>
+                                Read More
+                            </a>
+                        </div>
+                        <div class="service_card_icon">
+                            <i class="bi bi-gear-wide-connected"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Service Section End =============================== -->
+
+
+<!-- Portfolio Slider Section Start =============================== -->
+<section class="portfolio_section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8" data-aos="fade-up">
+                <div class="section_head text-center">
+                    <span class="section_subtitle">My Portfolio</span>
+                    <h2 class="section_title">Look at My Recent Case Studies</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="portfolio_slider_wrap" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper portfolio_slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#" class="portfolio_item">
+                        <img src="{% static 'images/pj1.jpeg' %}" alt="Case Study 1">
+                        <span class="portfolio_overlay">Case <br>Studies</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="portfolio_item">
+                        <img src="{% static 'images/pj2.jpeg' %}" alt="Case Study 2">
+                        <span class="portfolio_overlay">Case <br>Studies</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="portfolio_item">
+                        <img src="{% static 'images/pj3.jpeg' %}" alt="Case Study 3">
+                        <span class="portfolio_overlay">Case <br>Studies</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="portfolio_item">
+                        <img src="{% static 'images/pj4.jpeg' %}" alt="Case Study 4">
+                        <span class="portfolio_overlay">Case <br>Studies</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="portfolio_item">
+                        <img src="{% static 'images/pj2.jpeg' %}" alt="Case Study 2">
+                        <span class="portfolio_overlay">Case <br>Studies</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-center portfolio_more" data-aos="fade-up">
+            <a class="btn_primary" href="{% url 'core:projects' %}">More Case Studies</a>
+        </div>
+    </div>
+</section>
+<!-- Portfolio Slider Section End =============================== -->
+
+
+<!-- Team Section Start =============================== -->
+<section class="team_section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8" data-aos="fade-up">
+                <div class="section_head text-center">
+                    <span class="section_subtitle">Our Team</span>
+                    <h2 class="section_title">Meet with our team</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="team_card">
+                    <div class="team_thumb">
+                        <img src="{% static 'images/pro1.jpeg' %}" alt="Saleh">
+                        <a href="#" class="team_thumb_arrow" aria-label="View profile">
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    <h4 class="team_name"><a href="#">Saleh Sehgal</a></h4>
+                    <span class="team_role">Finance Manager</span>
+                    <div class="team_social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="team_card">
+                    <div class="team_thumb">
+                        <img src="{% static 'images/pro2.jpeg' %}" alt="Adnan Zaffar">
+                        <a href="#" class="team_thumb_arrow" aria-label="View profile">
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    <h4 class="team_name"><a href="#">Asad Ihtiaq</a></h4>
+                    <span class="team_role">Project Manager</span>
+                    <div class="team_social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="team_card">
+                    <div class="team_thumb">
+                        <img src="{% static 'images/pro3.jpeg' %}" alt="Imran Ali">
+                        <a href="#" class="team_thumb_arrow" aria-label="View profile">
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    <h4 class="team_name"><a href="#">Amir Hussain</a></h4>
+                    <span class="team_role">Team Manager</span>
+                    <div class="team_social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="team_card">
+                    <div class="team_thumb">
+                        <img src="{% static 'images/pro4.jpeg' %}" alt="Saad Shakeel">
+                        <a href="#" class="team_thumb_arrow" aria-label="View profile">
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    <h4 class="team_name"><a href="#">Faheem Khan</a></h4>
+                    <span class="team_role">Operation Manager</span>
+                    <div class="team_social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Team Section End =============================== -->
+
+
+<!-- Trusted Testimonial Section Start =============================== -->
+<section class="trusted_section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6" data-aos="fade-up">
+                <div class="section_head text-center">
+                    <span class="section_subtitle">Testimonial</span>
+                    <h2 class="section_title">Trusted by Clients.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="trusted_slider_wrap" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper trusted_slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="trusted_card">
+                        <div class="trusted_icon icon_red"><i class="bi bi-quote"></i></div>
+                        <p class="trusted_text">
+                            "Using this site to earn money feels authentic and straightforward, which I appreciate.
+                            It's user-friendly, and I'm glad they're taking steps to improve security."
+                        </p>
+                        <div class="trusted_user">
+                            <img src="https://placehold.co/80x80/EEEEFD/6864ED?text=UA" alt="Uzair Ahmad">
+                            <h5 class="trusted_name">Uzair Ahmad</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="trusted_card">
+                        <div class="trusted_icon icon_yellow"><i class="bi bi-quote"></i></div>
+                        <p class="trusted_text">
+                            "I find it reassuring that the website is transparent about how to make money. The
+                            interface is simple to use, and I'm looking forward to seeing more security features."
+                        </p>
+                        <div class="trusted_user">
+                            <img src="https://placehold.co/80x80/FDFAEF/EED064?text=UJ" alt="Umair Javaied">
+                            <h5 class="trusted_name">Umair Javaied</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="trusted_card">
+                        <div class="trusted_icon icon_green"><i class="bi bi-quote"></i></div>
+                        <p class="trusted_text">
+                            "I'm happy with the website's credibility and its clear explanation of earning
+                            opportunities. It's easy to navigate, and I'm eager to see further enhancements."
+                        </p>
+                        <div class="trusted_user">
+                            <img src="https://placehold.co/80x80/EBFAF2/33CC79?text=AB" alt="Abubakar">
+                            <h5 class="trusted_name">Abubakar</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="trusted_card">
+                        <div class="trusted_icon icon_purple"><i class="bi bi-quote"></i></div>
+                        <p class="trusted_text">
+                            "This site makes it easy to understand how to earn money, which builds my confidence in
+                            its legitimacy. The interface is user-friendly, and I hope they prioritize security."
+                        </p>
+                        <div class="trusted_user">
+                            <img src="https://placehold.co/80x80/EEEEFD/6864ED?text=HY" alt="Hammad Younus">
+                            <h5 class="trusted_name">Hammad Younus</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="trusted_card">
+                        <div class="trusted_icon icon_sky"><i class="bi bi-quote"></i></div>
+                        <p class="trusted_text">
+                            "I trust this website to help me earn money, thanks to its transparency and clarity.
+                            It's user-friendly, and I'm pleased to see efforts to strengthen security measures."
+                        </p>
+                        <div class="trusted_user">
+                            <img src="https://placehold.co/80x80/F7F7F7/151718?text=KB" alt="Kamran Butt">
+                            <h5 class="trusted_name">Kamran Butt</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="trusted_card">
+                        <div class="trusted_icon icon_orange"><i class="bi bi-quote"></i></div>
+                        <p class="trusted_text">
+                            "The website's credibility and straightforward approach to earning money make me feel
+                            comfortable using it. It's easy to navigate, and I appreciate the security."
+                        </p>
+                        <div class="trusted_user">
+                            <img src="https://placehold.co/80x80/FDFAEF/FF7425?text=AM" alt="Ali Masood">
+                            <h5 class="trusted_name">Ali Masood</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Trusted Testimonial Section End =============================== -->
+
+{% endblock %}
