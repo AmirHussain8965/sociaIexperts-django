@@ -17,8 +17,6 @@ class Wallet(models.Model):
         amount = Decimal(str(amount))
         if amount <= 0:
             raise ValueError("Deposit amount must be positive.")
-        self.balance += amount
-        self.save()
         Transaction.objects.create(
             wallet=self,
             transaction_type='deposit',
@@ -26,6 +24,8 @@ class Wallet(models.Model):
             status='completed',
             note='Deposit to wallet',
         )
+        # Note: self.balance is automatically recalculated by Transaction post_save signal
+        self.refresh_from_db()
         return self.balance
 
     def withdraw(self, amount):
@@ -35,8 +35,6 @@ class Wallet(models.Model):
             raise ValueError("Withdrawal amount must be positive.")
         if amount > self.balance:
             raise ValueError("Insufficient balance.")
-        self.balance -= amount
-        self.save()
         Transaction.objects.create(
             wallet=self,
             transaction_type='withdrawal',
@@ -44,6 +42,8 @@ class Wallet(models.Model):
             status='completed',
             note='Withdrawal from wallet',
         )
+        # Note: self.balance is automatically recalculated by Transaction post_save signal
+        self.refresh_from_db()
         return self.balance
 
 

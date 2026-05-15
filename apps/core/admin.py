@@ -9,3 +9,4 @@ class NewsletterAdmin(admin.ModelAdmin):
     search_fields = ['email']
     readonly_fields = ['subscribed_at']
     ordering = ['-subscribed_at']
+

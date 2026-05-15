@@ -182,84 +182,23 @@ solutions.{% endblock %}
             </div>
         </div>
 
-        <div class="pricing_row" data-aos="fade-up" data-aos-delay="100">
+        {% for package in packages %}
+        <div class="pricing_row" data-aos="fade-up" data-aos-delay="{% cycle '100' '200' '300' %}">
             <div class="row g-0 justify-content-center">
                 <div class="col-xl-4 col-lg-5 col-md-6">
-                    <div class="pricing_left">
-                        <div class="pricing_brand">
-                            <div class="pricing_brand_icon">
-                                <span></span>
-                            </div>
-                            <h5 class="pricing_brand_name">Starter</h5>
-                        </div>
-                        <p class="pricing_desc">Deposit Amount</p>
-                        <div class="pricing_price">
-                            <b>45$</b><span>/ 20 Days</span>
-                        </div>
-                        <a class="btn_pricing" href="#">Get Started</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-5 col-md-6">
-                    <div class="pricing_right">
-                        <h4 class="pricing_inc_title">What's included</h4>
-                        <ul class="pricing_features">
-                            <li class="active"><i class="bi bi-check-circle-fill"></i> 1 Way Of Earning</li>
-                            <li class="active"><i class="bi bi-check-circle-fill"></i> 6 Video Access</li>
-                            <li class="active"><i class="bi bi-check-circle-fill"></i> 1st Level Benefit 15%</li>
-                            <li class="disabled"><i class="bi bi-x-circle-fill"></i> Weekly Reports</li>
-                            <li class="disabled"><i class="bi bi-x-circle-fill"></i> 24/7 Support</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="pricing_row" data-aos="fade-up" data-aos-delay="200">
-            <div class="row g-0 justify-content-center">
-                <div class="col-xl-4 col-lg-5 col-md-6">
-                    <div class="pricing_left">
-                        <div class="pricing_brand">
-                            <div class="pricing_brand_icon">
-                                <span></span>
-                            </div>
-                            <h5 class="pricing_brand_name">Student Plan</h5>
-                        </div>
-                        <p class="pricing_desc">Show social proof notifications to increase leads and sales.</p>
-                        <div class="pricing_price">
-                            <b>65$</b><span>/ 48 Days</span>
-                        </div>
-                        <a class="btn_pricing" href="#">Get Started</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-5 col-md-6">
-                    <div class="pricing_right">
-                        <h4 class="pricing_inc_title">What's included</h4>
-                        <ul class="pricing_features">
-                            <li class="active"><i class="bi bi-check-circle-fill"></i> 3 Ways Of Earning</li>
-                            <li class="active"><i class="bi bi-check-circle-fill"></i> 12 Video Access</li>
-                            <li class="active"><i class="bi bi-check-circle-fill"></i> 1st Level Benefit 15%</li>
-                            <li class="disabled"><i class="bi bi-x-circle-fill"></i> Weekly Reports</li>
-                            <li class="disabled"><i class="bi bi-x-circle-fill"></i> 24/7 Support</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="pricing_row" data-aos="fade-up" data-aos-delay="300">
-            <div class="row g-0 justify-content-center">
-                <div class="col-xl-4 col-lg-5 col-md-6">
-                    <div class="pricing_left popular">
+                    <div class="pricing_left {% if package.is_popular %}popular{% endif %}">
+                        {% if package.is_popular %}
                         <span class="pricing_badge">Most Popular</span>
+                        {% endif %}
                         <div class="pricing_brand">
                             <div class="pricing_brand_icon">
                                 <span></span>
                             </div>
-                            <h5 class="pricing_brand_name">Premium Plan</h5>
+                            <h5 class="pricing_brand_name">{{ package.name }}</h5>
                         </div>
-                        <p class="pricing_desc">Show social proof notifications to increase leads and sales.</p>
+                        <p class="pricing_desc">{{ package.description }}</p>
                         <div class="pricing_price">
-                            <b>85$</b><span>/ 180 Days</span>
+                            <b>{{ package.price|floatformat:"0" }}$</b><span>/ {{ package.duration }}</span>
                         </div>
                         <a class="btn_pricing" href="#">Get Started</a>
                     </div>
@@ -268,17 +207,15 @@ solutions.{% endblock %}
                     <div class="pricing_right">
                         <h4 class="pricing_inc_title">What's included</h4>
                         <ul class="pricing_features">
-                            <li class="active"><i class="bi bi-check-circle-fill"></i> 7 Ways Of Earning</li>
-                            <li class="active"><i class="bi bi-check-circle-fill"></i> 12 Video Access</li>
-                            <li class="active"><i class="bi bi-check-circle-fill"></i> 1st Level Benefit 15%</li>
-                            <li class="active"><i class="bi bi-check-circle-fill"></i> 2nd Level Benefit 5%</li>
-                            <li class="active"><i class="bi bi-check-circle-fill"></i> Weekly Reports</li>
-                            <li class="active"><i class="bi bi-check-circle-fill"></i> 24/7 Support</li>
+                            {% for feature in package.features.all %}
+                            <li class="{% if feature.is_included %}active{% else %}disabled{% endif %}"><i class="bi {% if feature.is_included %}bi-check-circle-fill{% else %}bi-x-circle-fill{% endif %}"></i> {{ feature.feature_text }}</li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 </section>
 <!-- Pricing Section End =============================== -->

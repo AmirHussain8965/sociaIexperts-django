@@ -4,6 +4,7 @@ from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_protect
 from .forms import NewsletterForm
 from .models import Newsletter
+from apps.packages.models import Package
 
 
 def home(request):
@@ -18,7 +19,8 @@ def about(request):
 
 def services(request):
     """Services page view"""
-    return render(request, 'services.html')
+    packages = Package.objects.all().prefetch_related('features')
+    return render(request, 'services.html', {'packages': packages})
 
 
 def projects(request):
