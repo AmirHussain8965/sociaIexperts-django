@@ -47,6 +47,14 @@ class RegisterForm(UserCreationForm):
             'class': 'form-control'
         })
     )
+    referral_code = forms.CharField(
+        required=True,
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Enter master registration code',
+            'class': 'form-control'
+        })
+    )
+
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -68,3 +76,16 @@ class RegisterForm(UserCreationForm):
             'placeholder': 'Confirm your password',
             'class': 'form-control'
         })
+
+    def clean_referral_code(self):
+        code = self.cleaned_data.get('referral_code')
+        from .models import MasterSignupCode
+        master_code_obj = MasterSignupCode.objects.first()
+        
+        if not master_code_obj:
+            raise forms.ValidationError("Registration is currently disabled (no master code set).")
+            
+        if code != master_code_obj.code:
+            raise forms.ValidationError("Invalid registration code.")
+            
+        return code

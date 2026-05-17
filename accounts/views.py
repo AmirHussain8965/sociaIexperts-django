@@ -49,23 +49,12 @@ def register_view(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_active = False
+            user.is_active = True
             user.save()
             
-            # Send activation email
-            current_site = get_current_site(request)
-            mail_subject = 'Activate your account.'
-            uid = urlsafe_base64_encode(force_bytes(user.pk))
-            token = default_token_generator.make_token(user)
-            activation_link = f"http://{current_site.domain}/accounts/activate/{uid}/{token}/"
-            
-            message = f"Hi {user.username},\n\nPlease click on the link below to confirm your registration:\n{activation_link}"
-            to_email = form.cleaned_data.get('email')
-            email = EmailMessage(mail_subject, message, to=[to_email])
-            email.send()
-
-            messages.info(request, 'Please confirm your email address to complete the registration.')
-            return redirect('accounts:login')
+            login(request, user)
+            messages.success(request, 'Registration successful! You are now logged in.')
+            return redirect('core:home')
         else:
             for field, errors in form.errors.items():
                 for error in errors:

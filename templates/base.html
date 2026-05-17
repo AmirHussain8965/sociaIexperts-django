@@ -1,4 +1,5 @@
-{% load static %}<!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,7 +16,7 @@
     {% block extra_css %}{% endblock %}
 </head>
 
-<body{% if request.resolver_match.url_name in 'login,register' %} class="auth_body"{% endif %}>
+<body{% if request.resolver_match.url_name in 'login,register' %} class="auth_body" {% endif %}>
 
     {% block navbar %}
     <!-- Header Start =============================== -->
@@ -31,35 +32,49 @@
                 </button>
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <li class="nav_item"><a class="nav_link{% if request.resolver_match.url_name == 'home' %} active{% endif %}" href="{% url 'core:home' %}">Home</a></li>
-                        <li class="nav_item"><a class="nav_link{% if request.resolver_match.url_name == 'about' %} active{% endif %}" href="{% url 'core:about' %}">About</a></li>
-                        <li class="nav_item"><a class="nav_link{% if request.resolver_match.url_name == 'projects' %} active{% endif %}" href="{% url 'core:projects' %}">Our Project</a></li>
-                        <li class="nav_item"><a class="nav_link{% if request.resolver_match.url_name == 'services' %} active{% endif %}" href="{% url 'core:services' %}">Services</a></li>
-                        <li class="nav_item"><a class="nav_link{% if request.resolver_match.url_name == 'blog' %} active{% endif %}" href="{% url 'core:blog' %}">Blog</a></li>
+                        <li class="nav_item"><a
+                                class="nav_link{% if request.resolver_match.url_name == 'home' %} active{% endif %}"
+                                href="{% url 'core:home' %}">Home</a></li>
+                        <li class="nav_item"><a
+                                class="nav_link{% if request.resolver_match.url_name == 'about' %} active{% endif %}"
+                                href="{% url 'core:about' %}">About</a></li>
+                        <li class="nav_item"><a
+                                class="nav_link{% if request.resolver_match.url_name == 'projects' %} active{% endif %}"
+                                href="{% url 'core:projects' %}">Our Project</a></li>
+                        <li class="nav_item"><a
+                                class="nav_link{% if request.resolver_match.url_name == 'services' %} active{% endif %}"
+                                href="{% url 'core:services' %}">Services</a></li>
+                        <li class="nav_item"><a
+                                class="nav_link{% if request.resolver_match.url_name == 'blog' %} active{% endif %}"
+                                href="{% url 'core:blog' %}">Blog</a></li>
                         <li class="nav_item dropdown">
                             <a class="nav_link dropdown_toggle" href="#" id="userDropdown">
                                 {% if user.is_authenticated %}
-                                    {{ user.username }} <i class="bi bi-chevron-down"></i>
+                                {{ user.username }} <i class="bi bi-chevron-down"></i>
                                 {% else %}
-                                    User <i class="bi bi-chevron-down"></i>
+                                User <i class="bi bi-chevron-down"></i>
                                 {% endif %}
                             </a>
                             <ul class="dropdown_menu" id="userMenu">
                                 {% if user.is_authenticated %}
-                                    <li><a href="{% url 'profiles:dashboard' %}">Dashboard</a></li>
-                                    <li><a href="{% url 'profiles:profile' %}">Profile</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                                <li><a href="{% url 'profiles:dashboard' %}">Dashboard</a></li>
+                                <li><a href="{% url 'profiles:profile' %}">Profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
                                 {% else %}
-                                    <li><a href="{% url 'accounts:register' %}">Sign Up</a></li>
-                                    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                                <li><a href="{% url 'accounts:register' %}">Sign Up</a></li>
+                                <li><a href="{% url 'accounts:login' %}">Login</a></li>
                                 {% endif %}
                             </ul>
                         </li>
                     </ul>
                     <div class="nav_btns">
-                        <button class="search_btn" id="searchToggle" aria-label="Open search"><i class="bi bi-search"></i></button>
-                        <button class="sidebar_btn" id="sidebarToggle" aria-label="Open menu"><i class="bi bi-list"></i></button>
+                        <button class="search_btn" id="searchToggle" aria-label="Open search"><i
+                                class="bi bi-search"></i></button>
+                        <button class="sidebar_btn" id="sidebarToggle" aria-label="Open menu"><i
+                                class="bi bi-list"></i></button>
                     </div>
                 </div>
             </nav>
@@ -67,7 +82,8 @@
 
         <div class="search_popup" id="searchPopup">
             <div class="search_popup_inner">
-                <button class="search_close" id="searchClose" aria-label="Close search"><i class="bi bi-x-lg"></i></button>
+                <button class="search_close" id="searchClose" aria-label="Close search"><i
+                        class="bi bi-x-lg"></i></button>
                 <form class="search_form" onsubmit="return false;">
                     <input type="text" placeholder="Search here..." aria-label="Search">
                     <button type="submit" aria-label="Submit search"><i class="bi bi-search"></i></button>
@@ -81,7 +97,8 @@
 
     <!-- Sidebar Offcanvas Start =============================== -->
     <aside class="offcanvas_sidebar" id="offcanvasSidebar">
-        <button class="offcanvas_close" id="offcanvasClose" aria-label="Close sidebar"><i class="bi bi-x-lg"></i></button>
+        <button class="offcanvas_close" id="offcanvasClose" aria-label="Close sidebar"><i
+                class="bi bi-x-lg"></i></button>
         <div class="offcanvas_logo">
             <p class="logo_text">Social <span>Expert</span></p>
         </div>
@@ -91,14 +108,24 @@
                 <div class="offcanvas_info_icon"><i class="bi bi-envelope"></i></div>
                 <div class="offcanvas_info_text">
                     <span>Email</span>
-                    <a href="mailto:info@socialexperts.io">info@socialexperts.io</a>
+                    <a href="mailto:finance@socialexpertsnetwork.online">finance@socialexpertsnetwork.online</a>
+                    <a href="mailto:disputes@socialexpertsnetwork.online">disputes@socialexpertsnetwork.online</a>
+                    <a href="mailto:contact@socialexpertsnetwork.online">contact@socialexpertsnetwork.online</a>
+                </div>
+            </div>
+            <div class="offcanvas_info_item">
+                <div class="offcanvas_info_icon"><i class="bi bi-telephone"></i></div>
+                <div class="offcanvas_info_text">
+                    <span>WhatsApp</span>
+                    <a href="https://wa.me/923225607454?text=Hello,%20I%20have%20a%20question!">Chat with us on
+                        WhatsApp</a>
                 </div>
             </div>
             <div class="offcanvas_info_item">
                 <div class="offcanvas_info_icon"><i class="bi bi-telephone"></i></div>
                 <div class="offcanvas_info_text">
                     <span>Phone</span>
-                    <a href="tel:123456789">123456789</a>
+                    <a href="tel:+923225607454">+92 322 5607454</a>
                 </div>
             </div>
             <div class="offcanvas_info_item">
@@ -122,10 +149,10 @@
     {% if messages %}
     <div class="messages">
         {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         {% endfor %}
     </div>
     {% endif %}
@@ -162,12 +189,33 @@
                             <li>
                                 <i class="bi bi-envelope"></i>
                                 <div>
-                                    <a href="mailto:info@socialexperts.io">info@socialexperts.io</a>
+                                    <a
+                                        href="mailto:finance@socialexpertsnetwork.online">finance@socialexpertsnetwork.online</a>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="bi bi-envelope"></i>
+                                <div>
+                                    <a
+                                        href="mailto:disputes@socialexpertsnetwork.online">disputes@socialexpertsnetwork.online</a>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="bi bi-envelope"></i>
+                                <div>
+                                    <a
+                                        href="mailto:contact@socialexpertsnetwork.online">contact@socialexpertsnetwork.online</a>
                                 </div>
                             </li>
                             <li>
                                 <i class="bi bi-telephone"></i>
-                                <a href="tel:123456789">123456789</a>
+                                <a href="https://wa.me/923225607454?text=Hello,%20I%20have%20a%20question!"
+                                    target="_blank">Chat with us
+                                    on WhatsApp</a>
+                            </li>
+                            <li>
+                                <i class="bi bi-telephone"></i>
+                                <a href="tel:+923225607454">+92 322 5607454</a>
                             </li>
                         </ul>
                     </div>
@@ -236,6 +284,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="{% static 'js/script.js' %}"></script>
     {% block extra_js %}{% endblock %}
-</body>
+    </body>
 
 </html>
