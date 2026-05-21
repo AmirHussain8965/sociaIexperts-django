@@ -47,6 +47,15 @@ class RegisterForm(UserCreationForm):
             'class': 'form-control'
         })
     )
+    referral_code = forms.CharField(
+        required=True,
+        label='Registration / Referral Code',
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Enter master code or a friend\'s referral code',
+            'class': 'form-control'
+        })
+    )
+
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -68,3 +77,27 @@ class RegisterForm(UserCreationForm):
             'placeholder': 'Confirm your password',
             'class': 'form-control'
         })
+
+    def clean_referral_code(self):
+        code = self.cleaned_data.get('referral_code', '').strip()
+        from .models import MasterSignupCode
+        from profiles.models import ReferralProfile
+
+        master = MasterSignupCode.load()
+        if not master:
+            raise forms.ValidationError("Registration is currently disabled.")
+
+        # 1. Accept the global master code (no referrer)
+        if code == master.code:
+            self.referrer = None
+            return code
+
+        # 2. Accept a valid user referral code
+        try:
+            rp = ReferralProfile.objects.select_related('user').get(code=code.upper())
+            self.referrer = rp.user
+            return code.upper()
+        except ReferralProfile.DoesNotExist:
+            pass
+
+        raise forms.ValidationError("Invalid registration or referral code.")

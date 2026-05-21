@@ -1,0 +1,737 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Video Work - SOCIAL EXPERTS{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<style>
+/* ── Page layout ─────────────────────────────────────────── */
+.page-title { font-weight: 700; color: #1a1a2e; }
+
+/* ── Top Stats Bar ───────────────────────────────────────── */
+.vw-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+.vw-stat {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.04);
+}
+.vw-stat-icon {
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+}
+.vw-stat-icon.green  { background: rgba(51,204,121,.12); color: #22a860; }
+.vw-stat-icon.blue   { background: rgba(59,130,246,.12); color: #3b82f6; }
+.vw-stat-icon.amber  { background: rgba(245,158,11,.12); color: #d97706; }
+.vw-stat-icon.purple { background: rgba(168,85,247,.12); color: #9333ea; }
+.vw-stat-val  { font-size: 1.3rem; font-weight: 700; color: #1a1a2e; }
+.vw-stat-lbl  { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: .4px; font-weight: 500; }
+
+/* ── No-plan banner ──────────────────────────────────────── */
+.no-plan-banner {
+    background: linear-gradient(135deg, #fff7ed, #fef3c7);
+    border: 1px solid #fcd34d;
+    border-radius: 16px;
+    padding: 24px 28px;
+    display: flex; align-items: center; gap: 18px;
+    margin-bottom: 28px;
+}
+.no-plan-banner .icon { font-size: 2rem; color: #f59e0b; }
+.no-plan-banner h5 { margin: 0 0 4px; font-weight: 700; color: #92400e; }
+.no-plan-banner p  { margin: 0; color: #b45309; font-size: .9rem; }
+
+/* ── Video table ─────────────────────────────────────────── */
+.vw-table-wrap {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.04);
+    overflow: hidden;
+}
+.vw-table-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex; align-items: center; justify-content: space-between;
+}
+.vw-table-header h5 { margin: 0; font-weight: 600; color: #1a1a2e; }
+table.vw-table { width: 100%; border-collapse: collapse; }
+table.vw-table th {
+    padding: 11px 20px;
+    font-size: .73rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .5px;
+    color: #94a3b8; background: #f8fafc; text-align: left;
+}
+table.vw-table td {
+    padding: 14px 20px;
+    font-size: .88rem; color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+table.vw-table tr:last-child td { border-bottom: none; }
+table.vw-table tr:hover td { background: #fafcff; }
+
+.badge-watched {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 12px; border-radius: 8px;
+    font-size: .74rem; font-weight: 600;
+    background: rgba(51,204,121,.1); color: #22a860;
+}
+.badge-pending {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 12px; border-radius: 8px;
+    font-size: .74rem; font-weight: 600;
+    background: rgba(245,158,11,.1); color: #d97706;
+}
+.btn-watch {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 18px; border-radius: 10px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: #fff; font-size: .83rem; font-weight: 600;
+    border: none; cursor: pointer;
+    transition: all .25s ease;
+    text-decoration: none;
+}
+.btn-watch:hover { box-shadow: 0 4px 16px rgba(59,130,246,.4); transform: translateY(-1px); color:#fff; }
+.btn-watch:disabled, .btn-watch.done {
+    background: #e2e8f0; color: #94a3b8;
+    cursor: not-allowed; transform: none; box-shadow: none;
+}
+
+/* ── Watch Modal ─────────────────────────────────────────── */
+.modal-video .modal-content { border-radius: 20px; overflow: hidden; border: none; }
+.modal-video .modal-header  { background: #1a1a2e; color: #fff; border: none; padding: 16px 24px; }
+.modal-video .modal-header .btn-close { filter: invert(1); }
+.modal-video .modal-title   { font-weight: 600; font-size: 1rem; }
+.modal-video .modal-body    { padding: 0; background: #000; }
+
+#ytPlayerWrap {
+    position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 */
+    background: #000;
+}
+#ytPlayerWrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.watch-progress-bar {
+    background: #f1f5f9;
+    border-radius: 0;
+    height: 6px;
+    overflow: hidden;
+}
+.watch-progress-bar .bar {
+    height: 100%;
+    background: linear-gradient(to right, #33cc79, #22a860);
+    width: 0%;
+    transition: width .5s ease;
+}
+
+.watch-footer {
+    padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: #fff;
+}
+.watch-footer .status-msg {
+    font-size: .82rem; color: #64748b; font-weight: 500;
+}
+.watch-footer .earning-badge {
+    font-size: .82rem; font-weight: 700; color: #22a860;
+    background: rgba(51,204,121,.1); padding: 4px 12px; border-radius: 8px;
+}
+
+/* ── Success Toast ───────────────────────────────────────── */
+.earn-toast {
+    position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+    background: linear-gradient(135deg, #0f2027, #203a43);
+    color: #fff; border-radius: 16px;
+    padding: 18px 24px;
+    display: flex; align-items: center; gap: 14px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.3);
+    transform: translateY(120px);
+    transition: transform .4s cubic-bezier(.25,.8,.25,1);
+    min-width: 280px;
+}
+.earn-toast.show { transform: translateY(0); }
+.earn-toast .t-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(51,204,121,.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; color: #33cc79;
+}
+.earn-toast .t-title { font-weight: 700; font-size: .95rem; }
+.earn-toast .t-msg   { font-size: .8rem; color: rgba(255,255,255,.6); }
+
+/* ── Tabs ────────────────────────────────────────────────── */
+.vw-tabs {
+    display: flex;
+    gap: 4px;
+    background: #f1f5f9;
+    border-radius: 14px;
+    padding: 5px;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+.vw-tab-btn {
+    padding: 9px 22px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    font-size: .88rem;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all .2s ease;
+    display: flex; align-items: center; gap: 7px;
+}
+.vw-tab-btn.active {
+    background: #fff;
+    color: #1a1a2e;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+.vw-tab-btn:hover:not(.active) { color: #334155; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── Previous work table ─────────────────────────────────── */
+.pw-status {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 12px; border-radius: 8px;
+    font-size: .74rem; font-weight: 600;
+    background: rgba(51,204,121,.1); color: #22a860;
+}
+
+/* ── Anti-skip warning ───────────────────────────────────── */
+.skip-warning {
+    display: none;
+    background: #fef2f2; color: #dc2626;
+    border: 1px solid #fecaca;
+    border-radius: 10px; padding: 10px 14px;
+    font-size: .8rem; font-weight: 600;
+    margin: 10px 20px;
+    align-items: center; gap: 8px;
+}
+.skip-warning.visible { display: flex; }
+
+@media (max-width: 768px) {
+    .vw-stats { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 480px) {
+    .vw-stats { grid-template-columns: 1fr; }
+}
+</style>
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+{% block footer %}{% endblock footer %}
+
+{% block content %}
+<div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header"><h3>SOCIAL EXPERTS</h3></div>
+        <nav class="sidebar-nav">
+            <a href="{% url 'profiles:dashboard' %}"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
+            <a href="{% url 'profiles:profile' %}"><i class="bi bi-person-fill"></i> Profile</a>
+            <a href="{% url 'videos:list' %}" class="active"><i class="bi bi-play-circle-fill"></i> Video Work</a>
+            <a href="{% url 'profiles:plans' %}"><i class="bi bi-grid-3x3-gap-fill"></i> Plans</a>
+            <a href="{% url 'profiles:withdraw' %}"><i class="bi bi-arrow-up-circle"></i> Withdraw</a>
+            <a href="{% url 'accounts:logout' %}"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+        <div class="dashboard-topbar">
+            <button class="sidebar-toggler" id="sidebarToggler"><i class="bi bi-list"></i></button>
+            <div class="user-greeting"><span class="fw-bold">Hello, {{ user.username }}!</span></div>
+        </div>
+
+        <div class="container-fluid px-0">
+            <h2 class="page-title mb-1">Video Work</h2>
+            <p class="text-muted mb-4" style="font-size:.9rem;">Watch videos completely to earn rewards. No skipping allowed.</p>
+
+            <!-- Stats -->
+            <div class="vw-stats">
+                <div class="vw-stat">
+                    <div class="vw-stat-icon green"><i class="bi bi-currency-dollar"></i></div>
+                    <div>
+                        <div class="vw-stat-val">${{ today_earned|floatformat:2 }}</div>
+                        <div class="vw-stat-lbl">Earned Today</div>
+                    </div>
+                </div>
+                <div class="vw-stat">
+                    <div class="vw-stat-icon blue"><i class="bi bi-check2-circle"></i></div>
+                    <div>
+                        <div class="vw-stat-val">{{ watched_count_today }}</div>
+                        <div class="vw-stat-lbl">Watched Today</div>
+                    </div>
+                </div>
+                <div class="vw-stat">
+                    <div class="vw-stat-icon amber"><i class="bi bi-collection-play"></i></div>
+                    <div>
+                        <div class="vw-stat-val">{{ total_videos }}</div>
+                        <div class="vw-stat-lbl">Total Videos</div>
+                    </div>
+                </div>
+                <div class="vw-stat">
+                    <div class="vw-stat-icon purple"><i class="bi bi-award"></i></div>
+                    <div>
+                        <div class="vw-stat-val">
+                            {% if user_plan %}${{ earning_per_video|floatformat:2 }}{% else %}—{% endif %}
+                        </div>
+                        <div class="vw-stat-lbl">Per Video</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No-plan banner -->
+            {% if not user_plan %}
+            <div class="no-plan-banner">
+                <div class="icon"><i class="bi bi-exclamation-triangle-fill"></i></div>
+                <div>
+                    <h5>No Active Plan</h5>
+                    <p>You need an active subscription plan to earn from videos. Contact admin or <a href="{% url 'core:services' %}">view our plans</a>.</p>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- ── Tab Navigation ── -->
+            <div class="vw-tabs">
+                <button class="vw-tab-btn active" onclick="switchTab('videos', this)">
+                    <i class="bi bi-play-circle"></i> Videos Work
+                </button>
+                <button class="vw-tab-btn" onclick="switchTab('history', this)">
+                    <i class="bi bi-clock-history"></i> Check Previous Work
+                    {% if watch_history %}<span style="background:#3b82f6;color:#fff;border-radius:20px;padding:1px 8px;font-size:.7rem;">{{ watch_history|length }}</span>{% endif %}
+                </button>
+            </div>
+
+            <!-- ══════════  TAB 1: Videos Work  ══════════ -->
+            <div class="tab-panel active" id="tab-videos">
+
+            <!-- Video Table -->
+            <div class="vw-table-wrap">
+                <div class="vw-table-header">
+                    <h5><i class="bi bi-play-circle me-2"></i>Available Videos</h5>
+                    <span class="text-muted" style="font-size:.82rem;">{{ watched_count_today }}/{{ total_videos }} watched today</span>
+                </div>
+
+                {% if video_data %}
+                <table class="vw-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Duration</th>
+                            <th>Earning</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in video_data %}
+                        <tr>
+                            <td style="color:#94a3b8; font-weight:600;">{{ forloop.counter }}</td>
+                            <td>
+                                <span style="font-weight:600; color:#1a1a2e;">{{ item.video.title }}</span>
+                            </td>
+                            <td>
+                                <span style="font-family:monospace; font-size:.85rem;">
+                                    {{ item.video.duration_display }}
+                                </span>
+                            </td>
+                            <td>
+                                {% if user_plan %}
+                                <span style="font-weight:700; color:#22a860;">${{ earning_per_video|floatformat:2 }}</span>
+                                {% else %}
+                                <span style="color:#94a3b8;">—</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if item.already_watched %}
+                                <span class="badge-watched"><i class="bi bi-check-circle-fill"></i> Earned</span>
+                                {% else %}
+                                <span class="badge-pending"><i class="bi bi-clock"></i> Pending</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if item.already_watched %}
+                                <button class="btn-watch done" disabled>
+                                    <i class="bi bi-check2"></i> Done
+                                </button>
+                                {% else %}
+                                <button class="btn-watch"
+                                        data-video-id="{{ item.video.id }}"
+                                        data-video-title="{{ item.video.title }}"
+                                        data-youtube-id="{{ item.video.youtube_id }}"
+                                        data-duration="{{ item.video.duration }}"
+                                        data-earning="{{ earning_per_video }}"
+                                        data-has-plan="{% if user_plan %}1{% else %}0{% endif %}"
+                                        onclick="openWatchModal(this)">
+                                    <i class="bi bi-play-fill"></i> Watch
+                                </button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div style="text-align:center; padding:48px 24px; color:#94a3b8;">
+                    <i class="bi bi-collection-play" style="font-size:2.4rem; display:block; margin-bottom:12px; opacity:.4;"></i>
+                    <p>No videos available at the moment. Check back later.</p>
+                </div>
+                {% endif %}
+            </div>
+            </div><!-- /tab-videos -->
+
+            <!-- ══════════  TAB 2: Previous Work  ══════════ -->
+            <div class="tab-panel" id="tab-history">
+                <div class="vw-table-wrap">
+                    <div class="vw-table-header">
+                        <h5><i class="bi bi-clock-history me-2"></i>Previous Work</h5>
+                        <span class="text-muted" style="font-size:.82rem;">
+                            Total earned: <strong style="color:#22a860;">${{ total_earned_all|floatformat:2 }}</strong>
+                        </span>
+                    </div>
+
+                    {% if watch_history %}
+                    <table class="vw-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Earned</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for w in watch_history %}
+                            <tr>
+                                <td style="color:#94a3b8; font-weight:600;">{{ forloop.counter }}</td>
+                                <td style="font-weight:600; color:#1a1a2e;">{{ w.video.title }}</td>
+                                <td style="font-weight:700; color:#22a860;">+${{ w.earned_amount|floatformat:2 }}</td>
+                                <td style="color:#64748b; font-size:.85rem;">{{ w.watched_date|date:"M d, Y" }}</td>
+                                <td><span class="pw-status"><i class="bi bi-check-circle-fill"></i> Complete</span></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <div style="text-align:center; padding:48px 24px; color:#94a3b8;">
+                        <i class="bi bi-clock-history" style="font-size:2.4rem; display:block; margin-bottom:12px; opacity:.4;"></i>
+                        <p>No completed videos yet. Watch a video to see your history here.</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div><!-- /tab-history -->
+
+        </div><!-- /container -->
+    </main>
+</div>
+
+<!-- ══════════════  WATCH MODAL  ══════════════ -->
+<div class="modal fade modal-video" id="watchModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="watchModalTitle">Watch Video</h5>
+                <button type="button" class="btn-close" id="modalCloseBtn" onclick="closeWatchModal()"></button>
+            </div>
+            <div class="modal-body">
+                <!-- YouTube player -->
+                <div id="ytPlayerWrap">
+                    <div id="ytPlayer"></div>
+                </div>
+
+                <!-- Anti-skip warning -->
+                <div class="skip-warning" id="skipWarning">
+                    <i class="bi bi-skip-forward-circle-fill"></i>
+                    Skipping forward is not allowed. The video has been rewound.
+                </div>
+
+                <!-- Progress bar -->
+                <div class="watch-progress-bar">
+                    <div class="bar" id="progressBar"></div>
+                </div>
+
+                <!-- Footer -->
+                <div class="watch-footer">
+                    <div class="status-msg" id="watchStatusMsg">
+                        <i class="bi bi-hourglass-split me-1"></i> Watch the complete video to earn
+                    </div>
+                    <div class="earning-badge" id="earningBadge">+$<span id="earningAmt">0.00</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════  EARN TOAST  ══════════════ -->
+<div class="earn-toast" id="earnToast">
+    <div class="t-icon"><i class="bi bi-check-circle-fill"></i></div>
+    <div>
+        <div class="t-title">Earning Credited!</div>
+        <div class="t-msg" id="toastMsg">You earned $0.00</div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/dashboard.js' %}"></script>
+
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   Watch Modal + YouTube Anti-skip Logic
+   ═══════════════════════════════════════════════════════════ */
+
+const CSRF_TOKEN = '{{ csrf_token }}';
+
+// State
+let ytPlayer       = null;
+let ytReady        = false;
+let currentVideoId = null;   // Django pk
+let currentYtId    = null;
+let videoDuration  = 0;
+let earning        = '0.00';
+let hasPlan        = false;
+
+// Tracking
+let watchedSeconds  = 0;
+let lastTime        = 0;
+let pollInterval    = null;
+let completed       = false;
+let skipCount       = 0;
+
+// Called by YouTube API when ready
+function onYouTubeIframeAPIReady() {
+    ytReady = true;
+}
+
+function openWatchModal(btn) {
+    currentVideoId = btn.dataset.videoId;
+    currentYtId    = btn.dataset.youtubeId;
+    videoDuration  = parseInt(btn.dataset.duration, 10);
+    earning        = btn.dataset.earning;
+    hasPlan        = btn.dataset.hasPlan === '1';
+
+    // Reset state
+    watchedSeconds = 0;
+    lastTime       = 0;
+    completed      = false;
+    skipCount      = 0;
+
+    document.getElementById('watchModalTitle').textContent = btn.dataset.videoTitle;
+    document.getElementById('earningAmt').textContent = parseFloat(earning).toFixed(2);
+    document.getElementById('progressBar').style.width = '0%';
+    document.getElementById('watchStatusMsg').innerHTML = '<i class="bi bi-hourglass-split me-1"></i> Watch the complete video to earn';
+    document.getElementById('skipWarning').classList.remove('visible');
+
+    // Notify backend that watch has started (for timing check)
+    fetch(`/videos/${currentVideoId}/start/`, {
+        method: 'POST',
+        headers: { 'X-CSRFToken': CSRF_TOKEN, 'Content-Type': 'application/json' },
+    });
+
+    // Open Bootstrap modal
+    const modal = new bootstrap.Modal(document.getElementById('watchModal'));
+    modal.show();
+
+    // Build / reload player
+    buildPlayer(currentYtId);
+}
+
+function buildPlayer(ytId) {
+    if (ytPlayer) {
+        ytPlayer.destroy();
+        ytPlayer = null;
+    }
+    // Re-create the div (destroyed by YouTube SDK on destroy)
+    const wrap = document.getElementById('ytPlayerWrap');
+    wrap.innerHTML = '<div id="ytPlayer"></div>';
+
+    const tryBuild = () => {
+        if (!ytReady) { setTimeout(tryBuild, 200); return; }
+        ytPlayer = new YT.Player('ytPlayer', {
+            videoId: ytId,
+            playerVars: {
+                autoplay: 1,
+                rel: 0,
+                modestbranding: 1,
+                disablekb: 1,       // disable keyboard shortcuts
+                fs: 1,
+            },
+            events: {
+                onReady: onPlayerReady,
+                onStateChange: onPlayerStateChange,
+            },
+        });
+    };
+    tryBuild();
+}
+
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+function onPlayerStateChange(event) {
+    const state = event.data;
+
+    if (state === YT.PlayerState.PLAYING) {
+        lastTime = ytPlayer.getCurrentTime();
+        startPoll();
+    } else {
+        stopPoll();
+    }
+
+    if (state === YT.PlayerState.ENDED) {
+        stopPoll();
+        if (watchedSeconds >= videoDuration * 0.95) {
+            submitCompletion();
+        } else {
+            setStatus('<i class="bi bi-exclamation-circle me-1 text-warning"></i> You didn\'t watch enough — please rewatch from the beginning.');
+        }
+    }
+}
+
+function startPoll() {
+    stopPoll();
+    pollInterval = setInterval(checkForSkip, 800);
+}
+
+function stopPoll() {
+    if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+}
+
+function checkForSkip() {
+    if (!ytPlayer || typeof ytPlayer.getCurrentTime !== 'function') return;
+    const current = ytPlayer.getCurrentTime();
+    const jump    = current - lastTime;
+
+    // Tolerance: normal playback ~0.8 s + a bit of buffer = 2.5 s
+    if (jump > 2.5) {
+        // Forward skip detected — seek back
+        ytPlayer.seekTo(lastTime, true);
+        skipCount++;
+        showSkipWarning();
+    } else if (jump >= 0) {
+        // Normal playback
+        watchedSeconds += jump;
+        lastTime = current;
+        updateProgress();
+    } else {
+        // Rewind (fine) — update lastTime
+        lastTime = current;
+    }
+}
+
+function updateProgress() {
+    const pct = Math.min((watchedSeconds / videoDuration) * 100, 100);
+    document.getElementById('progressBar').style.width = pct.toFixed(1) + '%';
+    const remaining = Math.max(Math.ceil(videoDuration - watchedSeconds), 0);
+    if (remaining > 0) {
+        setStatus(`<i class="bi bi-play-circle me-1"></i> ${remaining}s remaining…`);
+    }
+}
+
+function showSkipWarning() {
+    const w = document.getElementById('skipWarning');
+    w.classList.add('visible');
+    setTimeout(() => w.classList.remove('visible'), 3000);
+}
+
+function setStatus(html) {
+    document.getElementById('watchStatusMsg').innerHTML = html;
+}
+
+function submitCompletion() {
+    if (completed) return;
+    completed = true;
+
+    if (!hasPlan) {
+        setStatus('<i class="bi bi-exclamation-triangle me-1 text-warning"></i> No active plan — earning not recorded.');
+        return;
+    }
+
+    setStatus('<i class="bi bi-hourglass me-1"></i> Recording your earning…');
+
+    fetch(`/videos/${currentVideoId}/complete/`, {
+        method: 'POST',
+        headers: { 'X-CSRFToken': CSRF_TOKEN, 'Content-Type': 'application/json' },
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.success) {
+            setStatus('<i class="bi bi-check-circle-fill me-1 text-success"></i> Earning credited! You can close this window.');
+            document.getElementById('progressBar').style.width = '100%';
+            showEarnToast(data.message || `You earned $${data.earned}!`);
+            // Mark the row as done
+            markRowDone(currentVideoId);
+        } else {
+            completed = false;
+            setStatus(`<i class="bi bi-x-circle me-1 text-danger"></i> ${data.error}`);
+        }
+    })
+    .catch(() => {
+        completed = false;
+        setStatus('<i class="bi bi-wifi-off me-1 text-danger"></i> Network error. Please try again.');
+    });
+}
+
+function closeWatchModal() {
+    stopPoll();
+    if (ytPlayer) { ytPlayer.stopVideo(); ytPlayer.destroy(); ytPlayer = null; }
+    const modalEl = document.getElementById('watchModal');
+    bootstrap.Modal.getInstance(modalEl)?.hide();
+}
+
+function markRowDone(videoId) {
+    const btn = document.querySelector(`.btn-watch[data-video-id="${videoId}"]`);
+    if (!btn) return;
+    btn.outerHTML = '<button class="btn-watch done" disabled><i class="bi bi-check2"></i> Done</button>';
+    // Update status cell
+    const row = btn.closest('tr');
+    if (row) {
+        const statusCell = row.cells[4];
+        if (statusCell) {
+            statusCell.innerHTML = '<span class="badge-watched"><i class="bi bi-check-circle-fill"></i> Earned</span>';
+        }
+    }
+}
+
+function showEarnToast(msg) {
+    const t = document.getElementById('earnToast');
+    document.getElementById('toastMsg').textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 5000);
+}
+
+// Close modal properly when Bootstrap dismisses it (e.g., back button)
+document.getElementById('watchModal').addEventListener('hidden.bs.modal', function() {
+    stopPoll();
+    if (ytPlayer) { try { ytPlayer.stopVideo(); ytPlayer.destroy(); } catch(e){} ytPlayer = null; }
+});
+
+/* ── Tab switching ── */
+function switchTab(name, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.vw-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+}
+</script>
+{% endblock %}

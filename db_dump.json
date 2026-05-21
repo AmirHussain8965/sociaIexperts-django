@@ -1,0 +1,1158 @@
+[
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "core",
+    "model": "newsletter"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "accounts",
+    "model": "otprecord"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "profiles",
+    "model": "wallet"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "profiles",
+    "model": "transaction"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "packages",
+    "model": "package"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "packages",
+    "model": "packagefeature"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "a3rm7bvngdfvhsf8vor6nwdzjqqk4fem",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCmQKEu3XsGMsNMpWpoUtqV8e7apAvd_vfef6mE21rS1mRJE6uzAnX63QjzQ-oO-I71Nus813WZSO-KPmjT15nleTncv4OCrXzrYGOPPXtmMGAHQMxBDIHJ7GK2MvgYIxkPo4jzRF0MnRi2jgiN5VG9P963OB4:1wNGi2:rEt8Yi6OVc0nKjp6CCpDJg6uuYlnOJes0cyXF7-AXv8",
+    "expire_date": "2026-05-27T21:01:38.930Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "suczo2pgz0pbmryxotfbs8hn9pguw8st",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pAWmEJcuvcMZJgZpGpoUtpV491tky50-997f1MR16XEtckcR1ZXZdTld0tIL6kH4CfWx6Rpqss8Jn0o-qRN3yeW9-10_w4KtrLXHoLzQEYke0mWMfvBWCQHdugcDmJ6TGQMJeqDB4Y-OAHe9ZyBbac-X_EROJE:1wNFdz:y-BiQH_zC5GLbf4CqVj1eWbfMH1NEexOxLzFZvK6NyQ",
+    "expire_date": "2026-05-27T19:53:23.610Z"
+  }
+},
+{
+  "model": "packages.package",
+  "pk": 1,
+  "fields": {
+    "name": "Starter ( Testing )",
+    "description": "Deposit Amount ( Amir Hussain )",
+    "price": "155.00",
+    "duration": "20 Days",
+    "is_popular": false,
+    "order": 1
+  }
+},
+{
+  "model": "packages.package",
+  "pk": 2,
+  "fields": {
+    "name": "Student Plan",
+    "description": "Show social proof notifications to increase leads and sales.",
+    "price": "65.00",
+    "duration": "48 Days",
+    "is_popular": false,
+    "order": 2
+  }
+},
+{
+  "model": "packages.package",
+  "pk": 3,
+  "fields": {
+    "name": "Premium Plan",
+    "description": "Show social proof notifications to increase leads and sales.",
+    "price": "85.00",
+    "duration": "180 Days",
+    "is_popular": true,
+    "order": 3
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 1,
+  "fields": {
+    "package": 1,
+    "feature_text": "1 Way Of Earning",
+    "is_included": true,
+    "order": 1
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 2,
+  "fields": {
+    "package": 1,
+    "feature_text": "6 Video Access",
+    "is_included": true,
+    "order": 2
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 3,
+  "fields": {
+    "package": 1,
+    "feature_text": "1st Level Benefit 15%",
+    "is_included": true,
+    "order": 3
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 4,
+  "fields": {
+    "package": 1,
+    "feature_text": "Weekly Reports",
+    "is_included": true,
+    "order": 4
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 5,
+  "fields": {
+    "package": 1,
+    "feature_text": "24/7 Support",
+    "is_included": true,
+    "order": 5
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 6,
+  "fields": {
+    "package": 2,
+    "feature_text": "3 Ways Of Earning",
+    "is_included": true,
+    "order": 1
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 7,
+  "fields": {
+    "package": 2,
+    "feature_text": "12 Video Access",
+    "is_included": true,
+    "order": 2
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 8,
+  "fields": {
+    "package": 2,
+    "feature_text": "1st Level Benefit 15%",
+    "is_included": true,
+    "order": 3
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 9,
+  "fields": {
+    "package": 2,
+    "feature_text": "Weekly Reports",
+    "is_included": false,
+    "order": 4
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 10,
+  "fields": {
+    "package": 2,
+    "feature_text": "24/7 Support",
+    "is_included": false,
+    "order": 5
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 11,
+  "fields": {
+    "package": 3,
+    "feature_text": "7 Ways Of Earning",
+    "is_included": true,
+    "order": 1
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 12,
+  "fields": {
+    "package": 3,
+    "feature_text": "12 Video Access",
+    "is_included": true,
+    "order": 2
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 13,
+  "fields": {
+    "package": 3,
+    "feature_text": "1st Level Benefit 15%",
+    "is_included": true,
+    "order": 3
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 14,
+  "fields": {
+    "package": 3,
+    "feature_text": "2nd Level Benefit 5%",
+    "is_included": true,
+    "order": 4
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 15,
+  "fields": {
+    "package": 3,
+    "feature_text": "Weekly Reports",
+    "is_included": true,
+    "order": 5
+  }
+},
+{
+  "model": "packages.packagefeature",
+  "pk": 16,
+  "fields": {
+    "package": 3,
+    "feature_text": "24/7 Support",
+    "is_included": true,
+    "order": 6
+  }
+},
+{
+  "model": "profiles.transaction",
+  "pk": 1,
+  "fields": {
+    "wallet": 1,
+    "transaction_type": "deposit",
+    "amount": "100.00",
+    "status": "completed",
+    "note": "",
+    "created_at": "2026-05-13T20:16:52.605Z"
+  }
+},
+{
+  "model": "profiles.transaction",
+  "pk": 2,
+  "fields": {
+    "wallet": 1,
+    "transaction_type": "withdrawal",
+    "amount": "60.00",
+    "status": "completed",
+    "note": "",
+    "created_at": "2026-05-13T20:32:09.570Z"
+  }
+},
+{
+  "model": "profiles.transaction",
+  "pk": 3,
+  "fields": {
+    "wallet": 1,
+    "transaction_type": "deposit",
+    "amount": "300.00",
+    "status": "completed",
+    "note": "",
+    "created_at": "2026-05-13T21:00:35.140Z"
+  }
+},
+{
+  "model": "profiles.transaction",
+  "pk": 4,
+  "fields": {
+    "wallet": 1,
+    "transaction_type": "deposit",
+    "amount": "1000.00",
+    "status": "completed",
+    "note": "",
+    "created_at": "2026-05-14T08:00:09.106Z"
+  }
+},
+{
+  "model": "profiles.transaction",
+  "pk": 5,
+  "fields": {
+    "wallet": 1,
+    "transaction_type": "withdrawal",
+    "amount": "500.00",
+    "status": "completed",
+    "note": "",
+    "created_at": "2026-05-14T08:00:30.292Z"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Newsletter Subscription",
+    "content_type": [
+      "core",
+      "newsletter"
+    ],
+    "codename": "add_newsletter"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Newsletter Subscription",
+    "content_type": [
+      "core",
+      "newsletter"
+    ],
+    "codename": "change_newsletter"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Newsletter Subscription",
+    "content_type": [
+      "core",
+      "newsletter"
+    ],
+    "codename": "delete_newsletter"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Newsletter Subscription",
+    "content_type": [
+      "core",
+      "newsletter"
+    ],
+    "codename": "view_newsletter"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add otp record",
+    "content_type": [
+      "accounts",
+      "otprecord"
+    ],
+    "codename": "add_otprecord"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change otp record",
+    "content_type": [
+      "accounts",
+      "otprecord"
+    ],
+    "codename": "change_otprecord"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete otp record",
+    "content_type": [
+      "accounts",
+      "otprecord"
+    ],
+    "codename": "delete_otprecord"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view otp record",
+    "content_type": [
+      "accounts",
+      "otprecord"
+    ],
+    "codename": "view_otprecord"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add wallet",
+    "content_type": [
+      "profiles",
+      "wallet"
+    ],
+    "codename": "add_wallet"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change wallet",
+    "content_type": [
+      "profiles",
+      "wallet"
+    ],
+    "codename": "change_wallet"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete wallet",
+    "content_type": [
+      "profiles",
+      "wallet"
+    ],
+    "codename": "delete_wallet"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view wallet",
+    "content_type": [
+      "profiles",
+      "wallet"
+    ],
+    "codename": "view_wallet"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add transaction",
+    "content_type": [
+      "profiles",
+      "transaction"
+    ],
+    "codename": "add_transaction"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change transaction",
+    "content_type": [
+      "profiles",
+      "transaction"
+    ],
+    "codename": "change_transaction"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete transaction",
+    "content_type": [
+      "profiles",
+      "transaction"
+    ],
+    "codename": "delete_transaction"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view transaction",
+    "content_type": [
+      "profiles",
+      "transaction"
+    ],
+    "codename": "view_transaction"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add package",
+    "content_type": [
+      "packages",
+      "package"
+    ],
+    "codename": "add_package"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change package",
+    "content_type": [
+      "packages",
+      "package"
+    ],
+    "codename": "change_package"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete package",
+    "content_type": [
+      "packages",
+      "package"
+    ],
+    "codename": "delete_package"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view package",
+    "content_type": [
+      "packages",
+      "package"
+    ],
+    "codename": "view_package"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add package feature",
+    "content_type": [
+      "packages",
+      "packagefeature"
+    ],
+    "codename": "add_packagefeature"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change package feature",
+    "content_type": [
+      "packages",
+      "packagefeature"
+    ],
+    "codename": "change_packagefeature"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete package feature",
+    "content_type": [
+      "packages",
+      "packagefeature"
+    ],
+    "codename": "delete_packagefeature"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view package feature",
+    "content_type": [
+      "packages",
+      "packagefeature"
+    ],
+    "codename": "view_packagefeature"
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$o4wFG4xHCi2xbqzyJpYXBS$H9A7i/q2W4sKGjDrfocv+UgTqaH/Aj1MwJYb+uAkb5Y=",
+    "last_login": "2026-05-13T21:01:38.920Z",
+    "is_superuser": false,
+    "username": "hanzlaanzar921@gmail.com",
+    "first_name": "Hanzla",
+    "last_name": "Anzar",
+    "email": "hanzlaanzar921@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-13T19:19:35.696Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$EKlEywtzT5oOD0JpmQv4f2$EFW36qwnEvckDt2Gjy85bmJ8QdTJKRkS/ubUXIvz/U0=",
+    "last_login": "2026-05-13T19:53:23.603Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-05-13T19:53:20.271Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "profiles.wallet",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "hanzlaanzar921@gmail.com"
+    ],
+    "balance": "840.00",
+    "updated_at": "2026-05-13T21:01:38.927Z"
+  }
+},
+{
+  "model": "profiles.wallet",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "balance": "0.00",
+    "updated_at": "2026-05-13T19:53:23.607Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-05-13T19:54:23.961Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "packages",
+      "package"
+    ],
+    "object_id": "1",
+    "object_repr": "Starter",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Price\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-05-13T19:55:38.483Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "packages",
+      "package"
+    ],
+    "object_id": "3",
+    "object_repr": "Premium Plan",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-05-13T20:16:52.610Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "profiles",
+      "transaction"
+    ],
+    "object_id": "1",
+    "object_repr": "Deposit $100 — pending",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-05-13T20:24:17.458Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "profiles",
+      "transaction"
+    ],
+    "object_id": "1",
+    "object_repr": "Deposit $100.00 — completed",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-05-13T20:29:33.704Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "profiles",
+      "wallet"
+    ],
+    "object_id": "1",
+    "object_repr": "hanzlaanzar921@gmail.com's Wallet — $100",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-05-13T20:32:09.585Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "profiles",
+      "transaction"
+    ],
+    "object_id": "2",
+    "object_repr": "Withdrawal $40 — completed",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-05-13T21:00:35.151Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "profiles",
+      "transaction"
+    ],
+    "object_id": "3",
+    "object_repr": "Deposit $300 — completed",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-05-13T21:01:12.287Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "profiles",
+      "transaction"
+    ],
+    "object_id": "2",
+    "object_repr": "Withdrawal $60.00 — completed",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Amount\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-05-14T08:00:09.120Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "profiles",
+      "transaction"
+    ],
+    "object_id": "4",
+    "object_repr": "Deposit $1000 — completed",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-05-14T08:00:30.296Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "profiles",
+      "transaction"
+    ],
+    "object_id": "5",
+    "object_repr": "Withdrawal $500 — completed",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-05-14T08:01:27.405Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "packages",
+      "package"
+    ],
+    "object_id": "1",
+    "object_repr": "Starter ( Testing )",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Description\", \"Price\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-05-14T08:01:47.757Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "packages",
+      "package"
+    ],
+    "object_id": "1",
+    "object_repr": "Starter ( Testing )",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"name\": \"package feature\", \"object\": \"Weekly Reports for Starter ( Testing )\", \"fields\": [\"Is included\"]}}, {\"changed\": {\"name\": \"package feature\", \"object\": \"24/7 Support for Starter ( Testing )\", \"fields\": [\"Is included\"]}}]"
+  }
+}
+]

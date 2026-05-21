@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.db import models
 
 
@@ -9,6 +10,10 @@ class Package(models.Model):
     duration = models.CharField(max_length=50)
     is_popular = models.BooleanField(default=False)
     order = models.PositiveIntegerField(default=0)
+    earning_per_video = models.DecimalField(
+        max_digits=8, decimal_places=2, default=Decimal('0.00'),
+        help_text='Amount credited to user wallet per completed video watch.'
+    )
 
     class Meta:
         ordering = ['order']

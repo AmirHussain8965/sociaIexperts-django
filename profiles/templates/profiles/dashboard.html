@@ -436,7 +436,8 @@
         <nav class="sidebar-nav">
             <a href="{% url 'profiles:dashboard' %}" class="active"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
             <a href="{% url 'profiles:profile' %}"><i class="bi bi-person-fill"></i> Profile</a>
-            <a href="{% url 'profiles:deposit' %}"><i class="bi bi-plus-circle"></i> Deposit</a>
+            <a href="{% url 'videos:list' %}"><i class="bi bi-play-circle-fill"></i> Video Work</a>
+            <a href="{% url 'profiles:plans' %}"><i class="bi bi-grid-3x3-gap-fill"></i> Plans</a>
             <a href="{% url 'profiles:withdraw' %}"><i class="bi bi-arrow-up-circle"></i> Withdraw</a>
             <a href="{% url 'accounts:logout' %}"><i class="bi bi-box-arrow-right"></i> Logout</a>
         </nav>
@@ -547,9 +548,9 @@
             <!-- ═══════════  WALLET STATS ROW  ═══════════ -->
             <div class="wallet-stats mt-4">
                 <div class="stat-card">
-                    <div class="stat-icon green"><i class="bi bi-arrow-down-circle"></i></div>
-                    <div class="stat-value">${{ total_deposits|floatformat:2 }}</div>
-                    <div class="stat-label">Total Deposits</div>
+                    <div class="stat-icon green"><i class="bi bi-play-circle-fill"></i></div>
+                    <div class="stat-value">${{ total_earnings|floatformat:2 }}</div>
+                    <div class="stat-label">Total Earnings</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon blue"><i class="bi bi-arrow-up-circle"></i></div>
