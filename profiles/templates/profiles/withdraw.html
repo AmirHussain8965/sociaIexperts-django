@@ -12,7 +12,7 @@
     padding: 40px 36px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(0, 0, 0, 0.04);
-    max-width: 520px;
+    max-width: 560px;
 }
 .form-card h3 {
     font-weight: 700;
@@ -24,72 +24,175 @@
     font-size: 0.9rem;
     margin-bottom: 28px;
 }
+/* Balance row */
+.balance-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
 .balance-preview {
+    flex: 1;
+    min-width: 140px;
     background: linear-gradient(135deg, #eff6ff, #eef2ff);
     border: 1px solid #bfdbfe;
     border-radius: 14px;
-    padding: 18px 22px;
-    margin-bottom: 24px;
+    padding: 16px 18px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
 }
-.balance-preview .bp-icon {
-    width: 44px;
-    height: 44px;
+.balance-preview.available {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border-color: #86efac;
+}
+.bp-icon {
+    width: 40px;
+    height: 40px;
     border-radius: 12px;
     background: rgba(59, 130, 246, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #3b82f6;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    flex-shrink: 0;
 }
-.balance-preview .bp-label {
-    font-size: 0.78rem;
+.balance-preview.available .bp-icon {
+    background: rgba(34, 197, 94, 0.15);
+    color: #16a34a;
+}
+.bp-label {
+    font-size: 0.73rem;
     color: #64748b;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 500;
 }
-.balance-preview .bp-amount {
-    font-size: 1.3rem;
+.bp-amount {
+    font-size: 1.2rem;
     font-weight: 700;
     color: #1a1a2e;
 }
-.form-input-group {
-    position: relative;
-    margin-bottom: 24px;
+/* Field groups */
+.field-group {
+    margin-bottom: 20px;
 }
-.form-input-group .input-prefix {
+.field-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+.field-group input,
+.field-group select {
+    width: 100%;
+    padding: 13px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #1a1a2e;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.field-group input:focus,
+.field-group select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+.field-group input::placeholder {
+    color: #cbd5e1;
+}
+.select-wrap {
+    position: relative;
+}
+.select-wrap::after {
+    content: '\F282';
+    font-family: 'Bootstrap Icons';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    pointer-events: none;
+    font-size: 0.85rem;
+}
+/* Amount field with $ prefix */
+.amount-wrap {
+    position: relative;
+}
+.amount-wrap .prefix {
     position: absolute;
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: #94a3b8;
     pointer-events: none;
 }
-.form-input-group input {
-    width: 100%;
-    padding: 14px 18px 14px 38px;
-    border: 2px solid #e2e8f0;
-    border-radius: 14px;
+.amount-wrap input {
+    padding-left: 34px;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #1a1a2e;
-    outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.form-input-group input:focus {
+/* Bank type grid */
+.bank-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.bank-option {
+    position: relative;
+}
+.bank-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.bank-option label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #475569;
+    text-transform: none;
+    letter-spacing: 0;
+    margin: 0;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+.bank-option label .bank-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+.bank-option label .icon-jazz  { background: rgba(239,68,68,.12); color: #ef4444; }
+.bank-option label .icon-easy  { background: rgba(34,197,94,.12);  color: #16a34a; }
+.bank-option label .icon-bank  { background: rgba(59,130,246,.12); color: #3b82f6; }
+.bank-option label .icon-other { background: rgba(168,85,247,.12); color: #9333ea; }
+.bank-option input[type="radio"]:checked + label {
     border-color: #3b82f6;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+    background: rgba(59, 130, 246, 0.06);
+    color: #1a1a2e;
 }
-.form-input-group input::placeholder {
-    color: #cbd5e1;
-    font-weight: 400;
-}
+/* Submit button */
 .btn-submit {
     width: 100%;
     padding: 14px;
@@ -103,6 +206,7 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+    margin-top: 4px;
 }
 .btn-submit.withdraw {
     background: linear-gradient(135deg, #3b82f6, #2563eb);
@@ -112,6 +216,11 @@
 .btn-submit.withdraw:hover {
     box-shadow: 0 6px 22px rgba(59, 130, 246, 0.45);
     transform: translateY(-2px);
+}
+.btn-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
 }
 .btn-back {
     display: inline-flex;
@@ -124,10 +233,7 @@
     margin-top: 16px;
     transition: color 0.2s;
 }
-.btn-back:hover {
-    color: #1a1a2e;
-    text-decoration: none;
-}
+.btn-back:hover { color: #1a1a2e; text-decoration: none; }
 .balance-warning {
     background: #fffbeb;
     border: 1px solid #fde68a;
@@ -140,6 +246,28 @@
     align-items: center;
     gap: 8px;
 }
+.pending-info {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    color: #1e40af;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+.divider-label {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 4px 0 16px;
+}
+#customBankGroup { display: none; }
 </style>
 {% endblock %}
 
@@ -156,7 +284,8 @@
         <nav class="sidebar-nav">
             <a href="{% url 'profiles:dashboard' %}"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
             <a href="{% url 'profiles:profile' %}"><i class="bi bi-person-fill"></i> Profile</a>
-            <a href="{% url 'profiles:deposit' %}"><i class="bi bi-plus-circle"></i> Deposit</a>
+            <a href="{% url 'videos:list' %}"><i class="bi bi-play-circle-fill"></i> Video Work</a>
+            <a href="{% url 'profiles:plans' %}"><i class="bi bi-grid-3x3-gap-fill"></i> Plans</a>
             <a href="{% url 'profiles:withdraw' %}" class="active"><i class="bi bi-arrow-up-circle"></i> Withdraw</a>
             <a href="{% url 'accounts:logout' %}"><i class="bi bi-box-arrow-right"></i> Logout</a>
         </nav>
@@ -174,39 +303,131 @@
         <div class="container-fluid px-0">
             <h2 class="mb-4 text-primary">Withdraw Funds</h2>
 
-            <div class="form-card">
-                <h3><i class="bi bi-arrow-up-circle me-2 text-primary"></i>Withdraw</h3>
-                <p class="form-subtitle">Request a withdrawal from your wallet.</p>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show mb-3" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
 
-                <!-- Current Balance Preview -->
-                <div class="balance-preview">
-                    <div class="bp-icon"><i class="bi bi-wallet2"></i></div>
-                    <div>
-                        <div class="bp-label">Available Balance</div>
-                        <div class="bp-amount">${{ wallet.balance|floatformat:2 }}</div>
+            <div class="form-card">
+                <h3><i class="bi bi-arrow-up-circle me-2 text-primary"></i>Withdrawal Request</h3>
+                <p class="form-subtitle">Fill in your payment details. The request will be processed once approved by an admin.</p>
+
+                <!-- Balance Row -->
+                <div class="balance-row">
+                    <div class="balance-preview">
+                        <div class="bp-icon"><i class="bi bi-wallet2"></i></div>
+                        <div>
+                            <div class="bp-label">Wallet Balance</div>
+                            <div class="bp-amount">${{ wallet.balance|floatformat:2 }}</div>
+                        </div>
+                    </div>
+                    <div class="balance-preview available">
+                        <div class="bp-icon"><i class="bi bi-check-circle"></i></div>
+                        <div>
+                            <div class="bp-label">Available</div>
+                            <div class="bp-amount">${{ available_balance|floatformat:2 }}</div>
+                        </div>
                     </div>
                 </div>
 
-                {% if wallet.balance <= 0 %}
-                <div class="balance-warning">
-                    <i class="bi bi-exclamation-triangle"></i>
-                    Your balance is $0.00. Please deposit funds first.
+                {% if pending_amount > 0 %}
+                <div class="pending-info">
+                    <i class="bi bi-clock-history mt-1"></i>
+                    <span><strong>${{ pending_amount|floatformat:2 }}</strong> is reserved for a pending withdrawal request.</span>
                 </div>
                 {% endif %}
 
-                <form method="post" action="{% url 'profiles:withdraw' %}">
+                {% if available_balance <= 0 %}
+                <div class="balance-warning">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    No available balance to withdraw. Please deposit funds or wait for pending requests to be resolved.
+                </div>
+                {% endif %}
+
+                <form method="post" action="{% url 'profiles:withdraw' %}" id="withdrawForm">
                     {% csrf_token %}
-                    <div class="form-input-group">
-                        <span class="input-prefix">$</span>
-                        <input type="number" name="amount" id="withdrawAmount"
-                               placeholder="0.00" step="0.01" min="0.01"
-                               max="{{ wallet.balance }}" required
-                               autocomplete="off"
-                               {% if wallet.balance <= 0 %}disabled{% endif %}>
+
+                    <!-- Amount -->
+                    <div class="field-group">
+                        <label for="withdrawAmount">Amount</label>
+                        <div class="amount-wrap">
+                            <span class="prefix">$</span>
+                            <input type="number" name="amount" id="withdrawAmount"
+                                   placeholder="0.00" step="0.01" min="10"
+                                   max="{{ available_balance }}" required
+                                   autocomplete="off"
+                                   {% if available_balance <= 0 %}disabled{% endif %}>
+                        </div>
+                        <small class="text-muted" style="font-size:.78rem; margin-top:5px; display:block;">
+                            <i class="bi bi-info-circle me-1"></i>Minimum withdrawal: <strong>$10.00</strong>
+                        </small>
                     </div>
+
+                    <div class="divider-label">Payment Method</div>
+
+                    <!-- Bank Type -->
+                    <div class="field-group">
+                        <label>Select Payment Service</label>
+                        <div class="bank-grid">
+                            <div class="bank-option">
+                                <input type="radio" name="bank_type" id="bankJazz" value="jazzcash"
+                                       {% if available_balance <= 0 %}disabled{% endif %}>
+                                <label for="bankJazz">
+                                    <span class="bank-icon icon-jazz"><i class="bi bi-phone"></i></span>
+                                    JazzCash
+                                </label>
+                            </div>
+                            <div class="bank-option">
+                                <input type="radio" name="bank_type" id="bankEasy" value="easypaisa"
+                                       {% if available_balance <= 0 %}disabled{% endif %}>
+                                <label for="bankEasy">
+                                    <span class="bank-icon icon-easy"><i class="bi bi-phone-fill"></i></span>
+                                    Easypaisa
+                                </label>
+                            </div>
+                            <div class="bank-option">
+                                <input type="radio" name="bank_type" id="bankTransfer" value="bank_transfer"
+                                       {% if available_balance <= 0 %}disabled{% endif %}>
+                                <label for="bankTransfer">
+                                    <span class="bank-icon icon-bank"><i class="bi bi-bank"></i></span>
+                                    Bank Transfer
+                                </label>
+                            </div>
+                            <div class="bank-option">
+                                <input type="radio" name="bank_type" id="bankOther" value="other"
+                                       {% if available_balance <= 0 %}disabled{% endif %}>
+                                <label for="bankOther">
+                                    <span class="bank-icon icon-other"><i class="bi bi-three-dots"></i></span>
+                                    Other
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom bank name (shown only for "Other") -->
+                    <div class="field-group" id="customBankGroup">
+                        <label for="bankName">Bank / Service Name</label>
+                        <input type="text" name="bank_name" id="bankName"
+                               placeholder="e.g. HBL, Meezan Bank, Sadapay…"
+                               autocomplete="off">
+                    </div>
+
+                    <!-- Account Number -->
+                    <div class="field-group">
+                        <label for="accountNumber">Account / IBAN Number</label>
+                        <input type="text" name="account_number" id="accountNumber"
+                               placeholder="Enter your account or IBAN number"
+                               autocomplete="off"
+                               {% if available_balance <= 0 %}disabled{% endif %}>
+                    </div>
+
                     <button type="submit" class="btn-submit withdraw"
-                            {% if wallet.balance <= 0 %}disabled style="opacity: 0.5; cursor: not-allowed;"{% endif %}>
-                        <i class="bi bi-arrow-up-circle"></i> Withdraw Funds
+                            {% if available_balance <= 0 %}disabled{% endif %}>
+                        <i class="bi bi-send"></i> Submit Withdrawal Request
                     </button>
                 </form>
 
@@ -221,4 +442,21 @@
 
 {% block extra_js %}
 <script src="{% static 'js/dashboard.js' %}"></script>
+<script>
+    // Show/hide custom bank name field
+    document.querySelectorAll('input[name="bank_type"]').forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            var customGroup = document.getElementById('customBankGroup');
+            var bankNameInput = document.getElementById('bankName');
+            if (this.value === 'other') {
+                customGroup.style.display = 'block';
+                bankNameInput.required = true;
+            } else {
+                customGroup.style.display = 'none';
+                bankNameInput.required = false;
+                bankNameInput.value = '';
+            }
+        });
+    });
+</script>
 {% endblock %}

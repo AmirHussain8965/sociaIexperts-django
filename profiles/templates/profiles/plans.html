@@ -1,0 +1,313 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Plans - SOCIAL EXPERTS{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<style>
+/* ── Page Header ─────────────────────────────────── */
+.page-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: #151718; margin-bottom: 4px;
+}
+.page-sub {
+    font-size: .9rem; color: #6A6A74; margin-bottom: 32px;
+}
+
+/* ── Active Plan Banner ──────────────────────────── */
+.active-plan-banner {
+    background: linear-gradient(135deg, #6864ED 0%, #4C40F7 100%);
+    border-radius: 20px; padding: 24px 28px;
+    color: #fff; display: flex; align-items: center;
+    gap: 20px; margin-bottom: 32px;
+    box-shadow: 0px 9px 25px rgba(104,100,237,.28);
+    flex-wrap: wrap;
+}
+.apb-icon {
+    width: 56px; height: 56px; border-radius: 16px;
+    background: rgba(255,255,255,.15); display: flex;
+    align-items: center; justify-content: center;
+    font-size: 1.6rem; flex-shrink: 0;
+}
+.apb-info { flex: 1; }
+.apb-label {
+    font-size: .72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(255,255,255,.65); margin-bottom: 2px;
+}
+.apb-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem; font-weight: 700; color: #fff;
+}
+.apb-earn {
+    font-size: .85rem; color: rgba(255,255,255,.75); margin-top: 2px;
+}
+.apb-badge {
+    background: rgba(255,255,255,.2);
+    border: 1px solid rgba(255,255,255,.3);
+    color: #fff; font-size: .75rem; font-weight: 700;
+    border-radius: 50px; padding: 6px 16px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: .04em;
+    white-space: nowrap;
+}
+
+/* ── Plans Grid ──────────────────────────────────── */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 20px;
+}
+.plan-card {
+    background: #fff;
+    border: 1.5px solid #F0F0F0;
+    border-radius: 20px; padding: 28px 24px;
+    box-shadow: 0px 9px 25px rgba(7,18,35,.06);
+    position: relative; transition: transform .2s, box-shadow .2s;
+}
+.plan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 16px 36px rgba(7,18,35,.1);
+}
+/* Active plan card */
+.plan-card.is-active {
+    border-color: #6864ED;
+    box-shadow: 0px 9px 30px rgba(104,100,237,.18);
+}
+/* Popular badge */
+.plan-popular-badge {
+    position: absolute; top: -1px; right: 24px;
+    background: #6864ED; color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: .68rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    padding: 4px 14px; border-radius: 0 0 10px 10px;
+}
+.plan-card.is-active .plan-popular-badge {
+    background: #33CC79;
+}
+/* Active tick */
+.plan-active-tick {
+    position: absolute; top: 16px; left: 20px;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: #6864ED; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .75rem;
+}
+
+.plan-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    color: #151718; margin-bottom: 4px;
+    padding-left: {% comment %}leave space if active tick{% endcomment %}0;
+}
+.plan-card.is-active .plan-name { padding-left: 36px; }
+
+.plan-price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem; font-weight: 800;
+    color: #6864ED; line-height: 1; margin-bottom: 4px;
+}
+.plan-price sup { font-size: 1rem; font-weight: 700; vertical-align: super; }
+.plan-price span.duration {
+    font-size: .8rem; font-weight: 500;
+    color: #6A6A74; font-family: 'Arimo', sans-serif;
+}
+.plan-desc {
+    font-size: .82rem; color: #6A6A74;
+    margin-bottom: 18px; min-height: 36px;
+}
+.plan-earn-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #EBFAF2; color: #16a34a;
+    font-size: .75rem; font-weight: 700;
+    border-radius: 8px; padding: 5px 12px;
+    margin-bottom: 18px;
+    font-family: 'Poppins', sans-serif;
+}
+.plan-divider {
+    border: none; border-top: 1px solid #F0F0F0;
+    margin-bottom: 16px;
+}
+.plan-features { list-style: none; padding: 0; margin: 0 0 22px; }
+.plan-features li {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: .84rem; color: #52525C;
+    padding: 4px 0;
+}
+.plan-features li .fi {
+    font-size: .8rem; flex-shrink: 0; margin-top: 2px;
+}
+.plan-features li.included .fi { color: #33CC79; }
+.plan-features li.excluded {
+    color: #94a3b8;
+    text-decoration: line-through;
+}
+.plan-features li.excluded .fi { color: #cbd5e1; }
+
+.btn-plan-active {
+    width: 100%; padding: 11px;
+    border: 2px solid #6864ED; border-radius: 12px;
+    background: #EEEEFD; color: #6864ED;
+    font-family: 'Poppins', sans-serif;
+    font-size: .85rem; font-weight: 700;
+    cursor: default; letter-spacing: .04em;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.btn-plan-contact {
+    width: 100%; padding: 11px;
+    border: none; border-radius: 12px;
+    background: #6864ED; color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: .85rem; font-weight: 700;
+    cursor: pointer; letter-spacing: .04em;
+    box-shadow: 0px 9px 14px rgba(89,86,233,.19);
+    transition: all .2s;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    text-decoration: none;
+}
+.btn-plan-contact:hover {
+    background: #4C40F7; color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0px 12px 20px rgba(89,86,233,.28);
+}
+
+/* No plan state */
+.no-plan-note {
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 14px; padding: 16px 20px;
+    font-size: .85rem; color: #92400E;
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 10px;
+}
+</style>
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+{% block footer %}{% endblock footer %}
+
+{% block content %}
+<div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header"><h3>SOCIAL EXPERTS</h3></div>
+        <nav class="sidebar-nav">
+            <a href="{% url 'profiles:dashboard' %}"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
+            <a href="{% url 'profiles:profile' %}"><i class="bi bi-person-fill"></i> Profile</a>
+            <a href="{% url 'videos:list' %}"><i class="bi bi-play-circle-fill"></i> Video Work</a>
+            <a href="{% url 'profiles:plans' %}" class="active"><i class="bi bi-grid-3x3-gap-fill"></i> Plans</a>
+            <a href="{% url 'profiles:withdraw' %}"><i class="bi bi-arrow-up-circle"></i> Withdraw</a>
+            <a href="{% url 'accounts:logout' %}"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="dashboard-topbar">
+            <button class="sidebar-toggler" id="sidebarToggler"><i class="bi bi-list"></i></button>
+            <div class="user-greeting">
+                <span class="fw-bold">Hello, {{ user.username }}!</span>
+            </div>
+        </div>
+
+        <div class="container-fluid px-0">
+            <h2 class="page-heading">Subscription Plans</h2>
+            <p class="page-sub">Choose a plan that fits your goals. Contact admin to activate or upgrade.</p>
+
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show mb-3" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <!-- Active plan banner -->
+            {% if user_plan %}
+            <div class="active-plan-banner">
+                <div class="apb-icon"><i class="bi bi-patch-check-fill"></i></div>
+                <div class="apb-info">
+                    <div class="apb-label">Your Current Plan</div>
+                    <div class="apb-name">{{ user_plan.package.name }}</div>
+                    <div class="apb-earn">
+                        Earning <strong>${{ user_plan.package.earning_per_video|floatformat:2 }}</strong> per video watched
+                        &nbsp;·&nbsp; Activated {{ user_plan.activated_at|date:"M d, Y" }}
+                    </div>
+                </div>
+                <span class="apb-badge"><i class="bi bi-check2-circle me-1"></i> Active</span>
+            </div>
+            {% else %}
+            <div class="no-plan-note">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                <span>You don't have an active plan yet. Pick one below and contact admin to activate it.</span>
+            </div>
+            {% endif %}
+
+            <!-- Plans grid -->
+            {% if packages %}
+            <div class="plans-grid">
+                {% for pkg in packages %}
+                <div class="plan-card {% if user_plan and user_plan.package.id == pkg.id %}is-active{% endif %}">
+
+                    {% if user_plan and user_plan.package.id == pkg.id %}
+                        <div class="plan-active-tick"><i class="bi bi-check2"></i></div>
+                        <div class="plan-popular-badge"><i class="bi bi-patch-check-fill me-1"></i> Your Plan</div>
+                    {% elif pkg.is_popular %}
+                        <div class="plan-popular-badge">Most Popular</div>
+                    {% endif %}
+
+                    <div class="plan-name">{{ pkg.name }}</div>
+                    <div class="plan-price">
+                        <sup>$</sup>{{ pkg.price|floatformat:0 }}<span class="duration"> / {{ pkg.duration }}</span>
+                    </div>
+                    <p class="plan-desc">{{ pkg.description }}</p>
+
+                    <div class="plan-earn-chip">
+                        <i class="bi bi-wallet2"></i>
+                        ${{ pkg.earning_per_video|floatformat:2 }} earned per video
+                    </div>
+
+                    <hr class="plan-divider">
+
+                    {% if pkg.features.all %}
+                    <ul class="plan-features">
+                        {% for feat in pkg.features.all %}
+                        <li class="{% if feat.is_included %}included{% else %}excluded{% endif %}">
+                            <i class="bi {% if feat.is_included %}bi-check-circle-fill{% else %}bi-x-circle{% endif %} fi"></i>
+                            {{ feat.feature_text }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    {% if user_plan and user_plan.package.id == pkg.id %}
+                    <div class="btn-plan-active">
+                        <i class="bi bi-check2-circle"></i> Currently Active
+                    </div>
+                    {% else %}
+                    <a href="{% url 'accounts:login' %}" class="btn-plan-contact"
+                       onclick="event.preventDefault(); alert('Please contact admin to activate this plan.');">
+                        <i class="bi bi-lightning-charge-fill"></i> Get This Plan
+                    </a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="text-center py-5" style="color:#94a3b8;">
+                <i class="bi bi-grid-3x3-gap" style="font-size:2.5rem; display:block; margin-bottom:12px; opacity:.4;"></i>
+                No plans available yet. Check back soon.
+            </div>
+            {% endif %}
+        </div>
+    </main>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}
